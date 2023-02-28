@@ -1,5 +1,5 @@
 import "./App.css";
-import { NavBar } from "./components";
+import { NavBar, Footer } from "./components";
 import { Home, About, Professionals, FAQs, Blog } from "./pages";
 import { Route, Routes } from "react-router-dom";
 
@@ -15,6 +15,7 @@ function App() {
         <Route path="/blog" element={<Blog />} />
         <Route path="/faqs" element={<FAQs />} />
       </Routes>
+      <Footer />
     </div>
   );
 }

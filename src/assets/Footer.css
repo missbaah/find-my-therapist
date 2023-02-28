@@ -1,0 +1,58 @@
+footer {
+  background-color: #3d7d57;
+  color: #ffffff;
+  padding: 57px 100px;
+}
+
+.item-1 {
+  display: flex;
+  gap: 50px;
+}
+
+.footer-text {
+  flex: 5;
+}
+
+.company-container {
+  flex: 3;
+}
+
+.help-container {
+  flex: 3;
+}
+
+.company-container a {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  text-decoration: none;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 161.8%;
+  color: #ffffff;
+}
+
+.help-container a {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  text-decoration: none;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 161.8%;
+  color: #ffffff;
+}
+
+.head-3 {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 23px;
+}
+
+.donate-container {
+  flex: 4;
+}
+
+.copyright {
+  text-align: center;
+}
