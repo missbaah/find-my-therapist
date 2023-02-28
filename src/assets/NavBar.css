@@ -1,0 +1,38 @@
+.navbar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 18px 100px;
+  gap: 300px;
+  height: 88px;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.link1 {
+  flex: 0;
+}
+.link2 {
+  display: flex;
+  gap: 50px;
+}
+.link3 {
+  flex: 1;
+}
+
+.login {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 16px;
+  gap: 10px;
+  color: #ffffff;
+  background: #b0b0b0;
+  border-radius: 4px;
+  border: none;
+}
