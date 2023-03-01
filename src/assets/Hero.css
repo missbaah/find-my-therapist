@@ -1,0 +1,38 @@
+.hero-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  padding: 100px;
+  gap: 69px;
+  /* width: 100%; */
+  height: 862px;
+  left: 0px;
+  top: 0px;
+  color: #ffffff;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url(../images/yoga-woman.png);
+}
+
+.hero-container h1 {
+  font-weight: 700;
+  font-size: 60px;
+  line-height: 80px;
+  width: 710px;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  margin: 15px 0px;
+  /* height: 160px; */
+}
+
+.hero-container p {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 23px;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+  /* width: 441px; */
+  /* height: 23px; */
+}
