@@ -1,0 +1,38 @@
+{
+  "name": "find_therapists",
+  "version": "1.0.0",
+  "description": "a directory of mental health professionals",
+  "main": "app.js",
+  "scripts": {
+    "test": "jest --detectOpenHandles",
+    "dev": "nodemon server.js",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "cloudinary": "^1.33.0",
+    "cookie-parser": "^1.4.6",
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.0.3",
+    "ejs": "^3.1.8",
+    "express": "^4.18.2",
+    "express-async-errors": "^3.1.1",
+    "express-openid-connect": "^2.12.0",
+    "express-session": "^1.17.3",
+    "jest": "^29.4.2",
+    "joi": "^17.7.0",
+    "jsonwebtoken": "^9.0.0",
+    "mongodb-memory-server": "^8.11.4",
+    "mongoose": "^6.9.1",
+    "morgan": "^1.10.0",
+    "morgan-json": "^1.1.0",
+    "multer": "^1.4.5-lts.1",
+    "nodemailer": "^6.9.1",
+    "passport": "^0.6.0",
+    "passport-google-oauth2": "^0.2.0",
+    "supertest": "^6.3.3",
+    "winston": "^3.8.2"
+  }
+}
