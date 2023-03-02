@@ -1,6 +1,8 @@
 const express = require('express')
 const app = express()
 const cookieParser = require('cookie-parser')
+const session = require('express-session');
+
 
 const appError = require('./utils/appError')
 const logger = require('./utils/logger')
@@ -25,6 +27,13 @@ app.use(express.urlencoded({ extended: true }))
 
 // COOKIE PARSER
 app.use(cookieParser());
+
+// SESSION
+app.use(session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false
+})); 
 
 // ROUTES
 app.use('/auth/', userRoute)

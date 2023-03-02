@@ -146,21 +146,26 @@ exports.checkOrCreateSocialUser = async (socialUser) => {
     return res.status(200).json({message: 'wetin sup'});
 };
 
-
 exports.completeRegistration = async (req, res) => {
-    console.log(req.user)
+    
+    const googleDetails = req.session.googleDetails
     try {
       const { licensingBoard, licenseNumber } = req.body;
       const user = new User({
-        googleId: req.user.googleId,
-        firstName: req.user.firstName,
-        lastName: req.user.lastName,
-        email: req.user.email,
+        googleId: googleDetails.googleId,
+        firstName: googleDetails.firstName,
+        lastName: googleDetails.lastName,
+        email: googleDetails.email,
         licensingBoard,
         licenseNumber
       });
       await user.save();
-      return res.status(200).json({ message: 'Registration successful' });
+
+      if(user){
+        createSendToken(user, 200, res)
+      }
+      
+    //   return res.status(200).json({ message: 'Registration successful', token: token });
     } catch (error) {
       return res.status(500).json({ message: `${error.message}` });
     }
