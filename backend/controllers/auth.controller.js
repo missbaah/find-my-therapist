@@ -4,6 +4,7 @@ const jwt = require('jsonwebtoken')
 const appError = require('../utils/appError')
 const logger = require('../utils/logger')
 const bcrypt = require('bcrypt')
+const Email = require('../utils/email')
 const User = require('../models/user.model')
 
 
@@ -67,9 +68,23 @@ exports.signup = async (req,res) => {
         licensingBoard, //check if valid
         licenseNumber   //check if valid
     })
+
+    try{
+        // SEND WELCOME MAIL
+        const url = `${req.protocol}://${req.get('host')}/api/v1/profile`
+        await new Email(user, url).sendWelcome()
+        // CREATE and SEND TOken
+        createSendToken(user, 200, res);
+    }catch(err){
+        res.status(500).json({
+            status: 'Failed',
+            message: `Account created successfully but we encountered an error sending email`,
+            error: `${err.message}`
+        });
+    }
     
-    // CREATE and SEND TOken
-    createSendToken(user, 200, res)
+    // // CREATE and SEND TOken
+    // createSendToken(user, 200, res)
 }    
 
 exports.login = async (req,res) => {
@@ -148,7 +163,20 @@ exports.completeRegistration = async (req, res) => {
       await user.save();
 
       if(user){
-        createSendToken(user, 200, res)
+        // createSendToken(user, 200, res)
+        try{
+            // SEND WELCOME MAIL
+            const url = `${req.protocol}://${req.get('host')}/api/v1/profile`
+            await new Email(user, url).sendWelcome()
+            // CREATE and SEND TOken
+            createSendToken(user, 200, res);
+        }catch(err){
+            res.status(500).json({
+                status: 'Failed',
+                message: `Account created successfully but we encountered an error sending email`,
+                error: `${err.message}`
+            });
+        }
       }
       
     } catch (error) {

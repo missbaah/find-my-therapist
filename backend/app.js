@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 const cookieParser = require('cookie-parser')
 const session = require('express-session');
+const cors = require('cors')
 
 
 const appError = require('./utils/appError')
@@ -25,6 +26,8 @@ app.use(morganMiddleWare)
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }))
 
+// CORS
+app.use(cors());
 // COOKIE PARSER
 app.use(cookieParser());
 
