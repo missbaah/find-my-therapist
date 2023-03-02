@@ -131,20 +131,6 @@ exports.authorize = async (req,res,next) => {
 }
 
 
-// SOCIAL SIGNUP OR LOGIN
-exports.checkOrCreateSocialUser = async (socialUser) => {
-    // validate user input
-    // if(!socialUser) throw new appError('User credentials are required',400)
-    // // check if user already exists
-    // const oldUser = await User.findOne({ googleId: socialUser.googleId })
-    // // create new user if new
-    // if(!oldUser){
-    //     const user = await User.create({...socialUser});
-    //     if(!user) throw new appError('Failed to create social user', 500)
-    // }
-    
-    return res.status(200).json({message: 'wetin sup'});
-};
 
 exports.completeRegistration = async (req, res) => {
     
@@ -165,7 +151,6 @@ exports.completeRegistration = async (req, res) => {
         createSendToken(user, 200, res)
       }
       
-    //   return res.status(200).json({ message: 'Registration successful', token: token });
     } catch (error) {
       return res.status(500).json({ message: `${error.message}` });
     }

@@ -14,20 +14,7 @@ router.post('/login', validateLoginInput, authController.login )
 router.get('/google', passport.authenticate('google', { scope: ['profile', 'email'] }))
 
 // CALLBACK
-
-router.get('/google/callback', passport.authenticate('google', {
-  session: false,
-}), function(req,res){
-  const oldUser = req.user.oldUser
-  if(oldUser){
-    res.redirect('/auth/profile')
-  }else{
-    const newUser = req.user.googleDetails
-    req.session.googleDetails = newUser
-    res.redirect('/auth/register/google')
-  }
-})
-router.get('/profile', (req,res) => { res.send('akwaaba')})
+router.get('/google/callback', passport.authenticate('google', {session: false}), socialAuth)
 
 // ROUTE TO REGISTER GOOGLE USERS
 router.get('/register/google', (req, res) => {
