@@ -5,6 +5,7 @@ const appError = require('../utils/appError')
 const logger = require('../utils/logger')
 const bcrypt = require('bcrypt')
 const Email = require('../utils/email')
+const tokens = require('../utils/tokens')
 const User = require('../models/user.model')
 
 
@@ -83,8 +84,6 @@ exports.signup = async (req,res) => {
         });
     }
     
-    // // CREATE and SEND TOken
-    // createSendToken(user, 200, res)
 }    
 
 exports.login = async (req,res) => {
@@ -145,8 +144,6 @@ exports.authorize = async (req,res,next) => {
     next()
 }
 
-
-
 exports.completeRegistration = async (req, res) => {
     
     const googleDetails = req.session.googleDetails
@@ -183,3 +180,37 @@ exports.completeRegistration = async (req, res) => {
       return res.status(500).json({ message: `${error.message}` });
     }
 }    
+
+
+exports.forgotPassword = async (req, res, next) => {
+    // 1. GET USER FROM EMAIL
+    const email = req.body.email;
+    const user = await User.findOne({email})
+    if(!user) throw new appError('No user with that email', 404)
+ 
+    // 2. GENERATE RESET TOKEN & OTHER RETURNED VALUES
+    const { resetToken, passwordToken, passwordResetExpires } = await tokens.createPasswordResetToken()
+
+    // 3. SAVE TO DATABASE                        
+    const updatedUser = await User.findOneAndUpdate({ email: email }, {
+        passwordToken: passwordToken,
+        passwordResetExpires: passwordResetExpires,
+    }, { new: true});
+
+    // 4. SEND TO CLIENT
+    const resetUrl = `${req.protocol}://${req.get('host')}/api/v1/auth/resetpassword/${resetToken}`
+
+    try{
+        // 5. SEND EMAIL TO CLIENT
+        await new Email(user, resetUrl).sendPasswordReset();
+
+        // SEND JSON RESPONSE
+        res.status(200).json({
+            status: 'success',
+            message: `Token sent to ${email}`,
+        });
+    }catch(err){
+        throw new appError('Error sending reset link, try again', 500)
+    }
+}
+

@@ -9,6 +9,7 @@ const User = require('../models/user.model')
 // AUTHENTICATION ROUTES
 router.post('/signup', validateInputMW, authController.signup ) //
 router.post('/login', validateLoginInput, authController.login )
+router.patch('/forgot-password', authController.forgotPassword)
 
 // GOOGLE REGISTRATION
 router.get('/google', passport.authenticate('google', { scope: ['profile', 'email'] }))
