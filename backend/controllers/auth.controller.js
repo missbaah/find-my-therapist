@@ -4,6 +4,7 @@ const jwt = require('jsonwebtoken')
 const appError = require('../utils/appError')
 const logger = require('../utils/logger')
 const bcrypt = require('bcrypt')
+const crypto = require('crypto')
 const Email = require('../utils/email')
 const tokens = require('../utils/tokens')
 const User = require('../models/user.model')
@@ -182,7 +183,7 @@ exports.completeRegistration = async (req, res) => {
 }    
 
 
-exports.forgotPassword = async (req, res, next) => {
+exports.forgotPassword = async (req, res) => {
     // 1. GET USER FROM EMAIL
     const email = req.body.email;
     const user = await User.findOne({email})
@@ -198,7 +199,7 @@ exports.forgotPassword = async (req, res, next) => {
     }, { new: true});
 
     // 4. SEND TO CLIENT
-    const resetUrl = `${req.protocol}://${req.get('host')}/api/v1/auth/resetpassword/${resetToken}`
+    const resetUrl = `${req.protocol}://${req.get('host')}/auth/resetpassword/${resetToken}`
 
     try{
         // 5. SEND EMAIL TO CLIENT
@@ -214,3 +215,34 @@ exports.forgotPassword = async (req, res, next) => {
     }
 }
 
+
+exports.resetPassword = async(req, res) => {
+    // 1. Create a hashed token from req params
+    const hashedToken = crypto
+        .createHash('sha256')
+        .update(req.params.token)
+        .digest('hex');
+    const user = await User.findOne({
+        passwordToken : hashedToken,
+        passwordResetExpires: { $gt: Date.now() }
+    });
+    // 2. Check if token exists or there is such a user
+    if(!user){
+        throw new appError('Token Expired or Invalid Token, Request for a new token', 403);
+    }
+    // 3. If user and token exists, update the new password
+    user.password = req.body.password;
+    user.passwordToken = null
+    user.passwordResetExpires = null;
+    await user.save();
+
+    try{
+        const loginUrl = `${req.protocol}://${req.get('host')}/api/auth/login`
+        // 4. Send success email to client
+        await new Email(user, loginUrl).sendVerifiedPR();
+        // 5. Log user in and send jwt
+        createSendToken(user, 200, res)
+    }catch(err){
+        throw new appError('Password has been reset, but we are having an issue sending a mail. Please proceed to login', 500);
+    };
+};

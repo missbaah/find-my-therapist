@@ -10,6 +10,7 @@ const User = require('../models/user.model')
 router.post('/signup', validateInputMW, authController.signup ) //
 router.post('/login', validateLoginInput, authController.login )
 router.patch('/forgot-password', authController.forgotPassword)
+router.patch('/resetpassword/:token', authController.resetPassword)
 
 // GOOGLE REGISTRATION
 router.get('/google', passport.authenticate('google', { scope: ['profile', 'email'] }))

@@ -71,6 +71,19 @@ module.exports = class Email {
             'Your password reset token(valid for only 10 minutes)'
         )
     }
-    // EXTEND THE MAIL FUNCTION AND SEND MAIL FOR DELETE ACCOUNT
-    // EXTEND THE MAIL FUNCTION AND SEND MAIL WELCOMING NEW USERS.
+    // EXTEND THE MAIL FUNCTION AND SEND MAIL FOR VERIFICATION OF PASSWORD RESET
+    async sendVerifiedPR(){
+        await this.send(
+            'verifiedPR',
+            'Your password has successfully been reset'
+        )
+    }
+
+    async sendVerifieedPR(){
+        await this.send(
+            'verified password reset',
+            'Your password has successfully been reset'
+        )
+    }
+    // EXTEND THE MAIL FUNCTION AND SEND MAIL FOR DELETING ACCOUNT.
 }
