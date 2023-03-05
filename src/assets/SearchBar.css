@@ -40,6 +40,11 @@
   line-height: 23px;
   color: #000000;
   padding: 0px 10px;
+  /* display: flex; */
+}
+.form label option {
+  padding: 10px;
+  font-size: 18px;
 }
 
 .form label select {
