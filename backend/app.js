@@ -13,6 +13,7 @@ const globalErrorHandler = require('./controllers/error.controller');
 // routes import
 const userRoute = require('./routes/user.route')
 const profileRoute = require('./routes/profile.route')
+const accountRoute = require('./routes/account.route')
 
 // VIEWS
 app.set('views', 'views')
@@ -41,6 +42,7 @@ app.use(session({
 // ROUTES
 app.use('/auth/', userRoute)
 app.use('/api/v1/profile', profileRoute)
+app.use('/api/v1/account', accountRoute)
 
 // home route
 app.get('/', (req,res) => { 

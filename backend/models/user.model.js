@@ -15,11 +15,14 @@ const userSchema = new Schema({
     licenseNumber: { type: String, required: true, unique: true },
     passwordToken: { type: String },
     passwordResetExpires: { type: Date },
+    isDeleted: { type: Boolean, defaultValue: false},
+    deletionToken : { type: String },
+    deletionTokenExpires: { type: Date },
+    deletionDate: { type: Date }
     // profile: {
     //     type: ObjectId,
     //     ref: 'Profile'
     // }
-    // passwordConfirm: { type: String, required: true},
 });
 
 

@@ -12,3 +12,13 @@ exports.createPasswordResetToken = async () => {
     const passwordResetExpires = Date.now() + 10 * 60 * 1000; // 10min
     return { resetToken, passwordToken, passwordResetExpires };
 }
+
+exports.createDeletionToken = async () => {
+    const token = crypto.randomBytes(32).toString('hex');
+    const deletionToken = crypto
+        .createHash('sha256')
+        .update(token)
+        .digest('hex');
+        const deletionTokenExpires = Date.now() + 10 * 60 * 1000;
+    return { token, deletionToken, deletionTokenExpires }
+}

@@ -78,12 +78,18 @@ module.exports = class Email {
             'Your password has successfully been reset'
         )
     }
-
-    async sendVerifieedPR(){
-        await this.send(
-            'verified password reset',
-            'Your password has successfully been reset'
-        )
-    }
     // EXTEND THE MAIL FUNCTION AND SEND MAIL FOR DELETING ACCOUNT.
+    async sendDeletion() {
+        await this.send('requestAccountDeletion', 'Delete your account')
+    }
+
+    // DELETE CONFIRMATION MAIL
+    async sendDeletionConfirmation() {
+        await this.send('confirmDeletion', 'Account Deletion')
+    }
+
+    // ACCOUNT REACTIVATION MAIL
+    async sendConfirmReactivation() {
+        await this.send('confirmReactivation', 'Account Reactivation')
+    }
 }
