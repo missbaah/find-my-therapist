@@ -1,8 +1,29 @@
 import "../assets/SearchBar.css";
 import searchicon from "../images/search.png";
 import line from "../images/Line 1.png";
+import { useEffect, useState } from "react";
 
 const SearchBar = () => {
+  const [regions, setRegions] = useState("");
+
+  useEffect(() => {
+    const options = {
+      method: "GET",
+      headers: {
+        "X-RapidAPI-Key": "e650f41705mshd9e7d891659ceb1p10a2ebjsn6f7bb0c7d83c",
+        "X-RapidAPI-Host": "wft-geo-db.p.rapidapi.com",
+      },
+    };
+
+    fetch(
+      "https://wft-geo-db.p.rapidapi.com/v1/geo/countries/GH/regions?limit=10",
+      options
+    )
+      .then((response) => response.json())
+      .then((response) => console.log(response))
+      .catch((err) => console.error(err));
+  }, []);
+
   return (
     <section>
       <form className="form">
