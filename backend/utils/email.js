@@ -89,7 +89,7 @@ module.exports = class Email {
     }
 
     // ACCOUNT REACTIVATION MAIL
-    async sendConfirmReactivation() {
-        await this.send('confirmReactivation', 'Account Reactivation')
+    async sendConfirmActivation() {
+        await this.send('confirmActivation', 'Account Reactivation')
     }
 }

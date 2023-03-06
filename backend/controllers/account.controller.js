@@ -1,10 +1,11 @@
-require('express-async-errors')
+require('express-async-errors');
 const crypto = require('crypto');
+const bcrypt = require('bcrypt');
 const tokens = require('../utils/tokens')
 const appError = require('../utils/appError');
 const Email = require('../utils/email');
 const User = require('../models/user.model');
-const Profile = require('../models/profile.model')
+const Profile = require('../models/profile.model');
 
 // REQ TO DELETE ACCOUNT
 exports.requestAccountDeletion = async (req, res, next) => {
@@ -89,4 +90,52 @@ exports.deleteAccount = async (req, res) => {
             message: `Your account has been successfully deactivated, but there was an error sending you a confirmation.Your account will be permanetly deleted in 30 days`
         })
     }
+}
+
+// ACTIVATE A USER'S ACCOUNT
+exports.activate = async (req, res) => {
+    const { email, password } = req.body
+
+    if (!email && !password) throw new appError('All fields are required!', 400)
+
+    const user = await User.findOne({ email: email })
+
+    //NOTIFY USERS WITH SOCIAL AUTH WHEN LOGGING IN
+    if (user && !user.password){
+        throw new appError(
+            "Please activate your account through socials", 400
+        );
+    }
+
+    // CHECK IF USER EXISTS WITHOUT LEAKING EXTRA INFOS
+    if (!user || !(await bcrypt.compare(password, user.password))){
+         throw new appError("Email Or Password Incorrect", 400);
+    }
+
+    // CHECK IF USER ACCOUNT IS NOT DEACTIVATED
+    if (!user.deletionDate) throw new appError("Your account is not deactivated!", 400)
+
+    // ACTIVATE PROFILE
+    const userUpdate = await User.findOneAndUpdate({ userId: user.id },{ isDeleted: false }, {new: true}
+    )
+    
+    // SET USER DELETION DATE TO NULL
+    user.deletionDate = null
+    await user.save()
+
+    try {
+        const profileUrl = `${req.protocol}://${req.get('host')}/api/v1/profile/`
+        await new Email(user, profileUrl).sendConfirmActivation()
+
+        res.status(200).json({
+            status: 'success',
+            message: 'Your account has been succesfully reactivated!'
+        })
+    } catch (err) {
+        throw new appError(
+            `Your account has been reactivated, but there was an error sending you a confirmation.`,
+            500)
+    }
+
+
 }
