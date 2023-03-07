@@ -20,18 +20,22 @@ const SearchBar = () => {
           <input type="text" placeholder="Search by name or specialty" />
         </label>
         <img src={line} alt="line" />
+
         <label className="item2">
-          Region
           <select name="Region" id="" placeholder="Region">
+            <option id="label" value="" disabled selected hidden>
+              Region
+            </option>
             {ListOfRegions}
           </select>
         </label>
+
         <img src={line} alt="line" />
         <label className="item3">
-          {" "}
-          Town
           <select name="" id="">
-            <option value=""></option>
+            <option id="label" value="" disabled selected hidden>
+              Town
+            </option>
           </select>
         </label>
         <button>Search</button>

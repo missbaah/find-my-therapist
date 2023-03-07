@@ -1,0 +1,56 @@
+.about-container {
+  display: flex;
+  flex-direction: column;
+  /* height: 904px; */
+  gap: 10px;
+}
+
+.top {
+  display: flex;
+  padding: 140px 105px;
+  /* margin-bottom: 100px; */
+}
+
+.top p span {
+  color: #3d7d57;
+  font-weight: 700;
+}
+
+.top h2 {
+  width: 600px;
+  height: 114px;
+  font-weight: 700;
+  font-size: 45px;
+  line-height: 57px;
+  margin: 0px;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+
+.top p {
+  width: 600px;
+  height: 160px;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 32px;
+  color: #8a8a8a;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+
+.top p a {
+  color: #3d7d57;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.bottom {
+  height: 700px;
+  background: url(../images/hugging-women.png), #f5f5f5;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+  z-index: 1;
+}

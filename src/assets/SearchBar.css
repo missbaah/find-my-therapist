@@ -14,7 +14,7 @@
 
 #search {
   position: absolute;
-  left: 2.33%;
+  left: 1.33%;
   right: 7.03%;
   top: 41.33%;
   bottom: 7.03%;
@@ -30,9 +30,9 @@
   height: 23px;
 }
 
-/* .form input::placeholder {
-  place-items: bottom;
-} */
+.form label:active {
+  border: none;
+}
 
 .form label {
   font-weight: 400;
@@ -50,6 +50,7 @@
 .form label select {
   margin: 0px 20px;
   border: none;
+  font-size: 18px;
 }
 
 .form button {
