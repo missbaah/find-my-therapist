@@ -8,16 +8,16 @@ const NavBar = () => {
         LOGO
       </Link>
       <section className="link2">
-        <Link className="item1" to="/about">
+        <Link className="item" to="/about">
           About us
         </Link>
-        <Link className="item2" to="/professionals">
+        <Link className="item" to="/professionals">
           Professionals
         </Link>
-        <Link className="item3" to="/blog">
+        <Link className="item" to="/blog">
           Blog
         </Link>
-        <Link className="item4" to="/faqs">
+        <Link className="item" to="/faqs">
           FAQs
         </Link>
       </section>
