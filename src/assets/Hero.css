@@ -9,9 +9,8 @@
   position: relative;
   left: 0px;
   top: 0px;
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-    url(../images/yoga-woman.png);
-  background-size: 125% 160%;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4));
+  background-size: cover;
 }
 
 .hero-container div {
