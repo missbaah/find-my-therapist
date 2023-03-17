@@ -2,12 +2,14 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
-  height: 90vh;
+  height: 100vh;
 }
 
 .top {
   display: flex;
   padding: 70px 80px;
+  gap: 50px;
+  justify-content: center;
 }
 
 .top p span {
@@ -16,10 +18,10 @@
 }
 
 .top h2 {
-  width: 600px;
+  width: 500px;
   height: 114px;
   font-weight: 700;
-  font-size: 45px;
+  font-size: 40px;
   line-height: 57px;
   margin: 0px;
   flex: none;
@@ -32,7 +34,6 @@
   height: 160px;
   font-weight: 400;
   font-size: 18px;
-  line-height: 32px;
   color: #8a8a8a;
   flex: none;
   order: 1;
