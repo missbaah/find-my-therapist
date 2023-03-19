@@ -1,4 +1,4 @@
-import { Hero } from "../components";
+import { Hero, CrisisBanner } from "../components";
 import { About, Professionals } from "../pages";
 
 const Home = () => {
@@ -7,6 +7,7 @@ const Home = () => {
       <Hero />
       <About />
       <Professionals />
+      <CrisisBanner />
     </main>
   );
 };
