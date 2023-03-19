@@ -28,7 +28,7 @@ const createSendToken = (user,statusCode, res) => {
     // SEND TOKEN TO CLIENT
     res.cookie('jwt', token, cookieOptions)
 
-    res.status(statusCode).json({
+    return res.status(statusCode).json({
         status: 'success',
         data: {
             user,
@@ -108,7 +108,7 @@ exports.login = async (req,res) => {
 
     // compare password
     if(user && (await bcrypt.compare(password, user.password))){
-        createSendToken(user, 200, res)
+       return createSendToken(user, 200, res)
     }
     
     res.status(400).json({
@@ -141,7 +141,6 @@ exports.authorize = async (req,res,next) => {
 
     // add user to req object
     req.user = currentUser; 
-    // console.log(currentUser)
     next()
 }
 
