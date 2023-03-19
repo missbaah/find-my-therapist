@@ -3,9 +3,51 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 132px 105px;
+  padding: 132px 80px;
   gap: 10px;
   position: relative;
-  height: 958px;
+  height: 650px;
   background: #ffffff;
+}
+
+.blog-stories {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0px;
+  gap: 96px;
+  height: 701px;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+.heading {
+  text-align: center;
+  width: 600px;
+}
+
+.heading h2 {
+  font-weight: 700;
+  font-size: 45px;
+}
+
+.heading p {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 23px;
+  color: #8a8a8a;
+}
+
+.posts {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 30px;
+  height: 486px;
 }
