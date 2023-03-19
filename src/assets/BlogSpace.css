@@ -1,0 +1,11 @@
+.blogspace {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 132px 105px;
+  gap: 10px;
+  position: relative;
+  height: 958px;
+  background: #ffffff;
+}

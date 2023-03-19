@@ -1,5 +1,5 @@
-import { Hero, CrisisBanner } from "../components";
-import { About, Professionals } from "../pages";
+import { Hero, CrisisBanner, BlogSpace } from "../components";
+import { About, Professionals, FAQs } from "../pages";
 
 const Home = () => {
   return (
@@ -8,6 +8,8 @@ const Home = () => {
       <About />
       <Professionals />
       <CrisisBanner />
+      <BlogSpace />
+      <FAQs />
     </main>
   );
 };

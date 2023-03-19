@@ -40,19 +40,19 @@ const SearchBar = () => {
             name="Region"
             id="region"
             placeholder="Region"
+            defaultValue="option1"
             onChange={handleRegionChange}
           >
-            <option id="label" value="" disabled selected hidden>
+            <option id="label" value="option1" disabled hidden>
               Region
             </option>
             {ListOfRegions}
           </select>
         </label>
-
         <img src={line} alt="line" />
         <label className="item3">
-          <select name="" id="">
-            <option id="label" value="" disabled selected hidden>
+          <select name="Town" id="town" defaultValue="option2">
+            <option id="label" value="option2" disabled hidden>
               Town
             </option>
             {ListOfTowns}
