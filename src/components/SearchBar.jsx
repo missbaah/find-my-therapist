@@ -2,30 +2,29 @@ import "../assets/SearchBar.css";
 import searchicon from "../images/search.png";
 import line from "../images/Line 1.png";
 import { regions } from "../data/regions";
+import { useState } from "react";
 
 const SearchBar = () => {
   const ListOfRegions = regions.map((region) => {
     return <option key={region.id}>{region.name}</option>;
   });
 
-  // const region = document.querySelector("#region");
-  // const regionValue = region.options[region.selectedIndex];
-  // const regionText = regionValue.text;
-  // console.log(region, regionValue, regionText);
+  const [towns, setTowns] = useState([]);
 
-  // var town = regions.filter((region) => {
-  //   if (region.name === regionText) {
-  //     return [region];
-  //   }
-  // });
+  const handleRegionChange = (event) => {
+    const selectedRegion = regions.find(
+      (region) => region.name === event.target.value
+    );
+    if (selectedRegion) {
+      setTowns(selectedRegion.cities);
+    } else {
+      setTowns([]);
+    }
+  };
 
-  // console.log(town);
-
-  // const ListOfTowns = town.cities.map((city) => {
-  //   return <option key={region.id}>{city}</option>;
-  // });
-
-  // console.log(ListOfTowns);
+  const ListOfTowns = towns.map((town) => {
+    return <option key={town}>{town}</option>;
+  });
 
   return (
     <section>
@@ -37,7 +36,12 @@ const SearchBar = () => {
         <img src={line} alt="line" />
 
         <label className="item2">
-          <select name="Region" id="region" placeholder="Region">
+          <select
+            name="Region"
+            id="region"
+            placeholder="Region"
+            onChange={handleRegionChange}
+          >
             <option id="label" value="" disabled selected hidden>
               Region
             </option>
@@ -51,7 +55,7 @@ const SearchBar = () => {
             <option id="label" value="" disabled selected hidden>
               Town
             </option>
-            {/* {ListOfTowns} */}
+            {ListOfTowns}
           </select>
         </label>
         <button>Search</button>

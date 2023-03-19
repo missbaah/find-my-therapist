@@ -1,25 +1,25 @@
 .hero-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: flex-start;
-  padding: 50px 80px;
-  gap: 80px;
-  height: 90vh;
+  padding: 80px;
+  gap: 69px;
+  height: 862px;
   position: relative;
   left: 0px;
   top: 0px;
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4));
-  background-size: cover;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url(../images/yoga-woman.png);
 }
 
 .hero-container div {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: flex-end;
+  padding: 0px;
+  gap: 16px;
   width: 710px;
-  height: 300px;
   flex: none;
   order: 0;
   flex-grow: 0;
@@ -27,10 +27,11 @@
 
 .hero-container div h1 {
   margin-bottom: 0px;
+  line-height: 80px;
   width: 710px;
   height: 160px;
   font-weight: 700;
-  font-size: 48px;
+  font-size: 60px;
   color: #ffffff;
   flex: none;
   order: 0;
@@ -38,11 +39,12 @@
 }
 
 .hero-container div p {
+  margin: 0px;
   width: 450px;
   height: 23px;
+  line-height: 23px;
   font-weight: 400;
-  font-size: 16px;
-  margin: 0px;
+  font-size: 18px;
   color: #ffffff;
   flex: none;
   order: 1;

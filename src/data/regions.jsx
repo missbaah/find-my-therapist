@@ -300,7 +300,7 @@ export const regions = [
   },
   {
     id: "08",
-    name: "Nort East",
+    name: "North East",
     cities: ["Chereponi", "Gambaga", "Nalerigu", "Walewale"],
   },
   {
