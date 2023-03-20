@@ -1,0 +1,113 @@
+.blanket {
+  display: none;
+}
+
+.active {
+  display: block;
+  height: 1192px;
+  background: rgba(0, 0, 0, 0.6);
+  width: 100%;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.blanket form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 54px 48px 32px;
+  gap: 20px;
+  background: #ffffff;
+  border-radius: 10px;
+  width: 561px;
+  height: 728px;
+}
+
+.blanket form h2 {
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 46px;
+}
+
+.input-box {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.input-box div {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  /* align-items: center; */
+}
+
+.blanket form label {
+  display: block;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.blanket form input {
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  padding: 17px 16px;
+  width: 465px;
+}
+.blanket form button {
+  width: 500px;
+  padding: 18px;
+  font-weight: 700;
+  font-size: 14px;
+  border-radius: 10px;
+}
+.login-options {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.login {
+  background: #3d7d57;
+  color: #ffffff;
+  border: none;
+  margin: 10px 0px;
+}
+
+.socials {
+  color: #666666;
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+}
+
+.social-text {
+  text-align: center;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 18px;
+  color: #666666;
+}
+
+.redirect {
+  text-align: center;
+  font-size: 16px;
+  color: #8a8a8a;
+  border-top: 1px solid #e0e0e0;
+  padding-top: 30px;
+}
+
+.redirect span {
+  color: #3d7d57;
+  font-weight: 700;
+}
+
+.dismiss-btn {
+  margin: 0px;
+  border: none;
+  background: none;
+  color: #3d7d57;
+}

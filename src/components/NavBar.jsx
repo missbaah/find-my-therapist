@@ -1,7 +1,15 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import "../assets/NavBar.css";
+import { Login } from "../components";
 
 const NavBar = () => {
+  const [showLogin, setShowLogin] = useState(false);
+
+  const handleLogin = () => {
+    setShowLogin((showLogin) => !showLogin);
+  };
+
   return (
     <nav className="navbar">
       <Link className="link1 logo" to="/">
@@ -22,7 +30,10 @@ const NavBar = () => {
         </Link>
       </section>
 
-      <button className="link3 login">Therapist Login</button>
+      <button className="link3 login" onClick={handleLogin}>
+        Therapist Login
+      </button>
+      <Login showLogin={showLogin} />
     </nav>
   );
 };
