@@ -3,7 +3,7 @@
   flex-direction: column;
   justify-content: flex-end;
   align-items: flex-start;
-  padding: 80px;
+  padding: 100px 80px;
   gap: 69px;
   height: 862px;
   position: relative;
@@ -13,7 +13,21 @@
     url(../images/yoga-woman.png);
 }
 
-.hero-container div {
+.hero-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+  top: -70px;
+  padding: 0px;
+  gap: 69px;
+  width: 893px;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+.hero-info div {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -25,7 +39,7 @@
   flex-grow: 0;
 }
 
-.hero-container div h1 {
+.hero-info div h1 {
   margin-bottom: 0px;
   line-height: 80px;
   width: 710px;
@@ -38,7 +52,7 @@
   flex-grow: 0;
 }
 
-.hero-container div p {
+.hero-info div p {
   margin: 0px;
   width: 450px;
   height: 23px;
