@@ -1,5 +1,7 @@
 import "../assets/BlogSpace.css";
 import postImage from "../images/Image.png";
+import authorpic from "../images/authorpic.png";
+import BlogImage from "../images/BlogImage.png";
 
 const BlogSpace = () => {
   const blogpost = [
@@ -10,14 +12,18 @@ const BlogSpace = () => {
         "Lorem ipsum dolor sit amet consectetur. Mauris ultricies habitant a placerat mattis[...]  ",
       tag: "Resources",
       author: "Michael Mensah",
+      headline: "Therapist",
+      image: { BlogImage },
     },
     {
       id: 2,
       title: "The Importance of Mental Health Professionals",
       snippet:
         "Lorem ipsum dolor sit amet consectetur. Mauris ultricies habitant a placerat mattis[...]  ",
-      tag: "Story",
+      tag: "Stories",
       author: "Michael Mensah",
+      headline: "Therapist",
+      image: { BlogImage },
     },
     // {
     //   id: 1,
@@ -31,9 +37,13 @@ const BlogSpace = () => {
 
   const ListOfOtherPost = blogpost.map((post) => {
     return (
-      <section key={post.id}>
-        <h3>{post.title}</h3>
-        <p>{post.tag}</p>
+      <section className="featured-posts" key={post.id}>
+        <img src={BlogImage} alt="post image" />
+        <aside>
+          <p className="post-tag">{post.tag}</p>
+          <h3>{post.title}</h3>
+          <p className="post-author">{post.author}</p>
+        </aside>
       </section>
     );
   });
@@ -51,12 +61,19 @@ const BlogSpace = () => {
         <section className="posts">
           <div className="new-post">
             <img src={postImage} alt="post img" />
-            <p>{blogpost[0].tag}</p>
-            <p>{blogpost[0].title}</p>
-            <p>
+            <p className="tag">{blogpost[0].tag}</p>
+            <p className="title">{blogpost[0].title}</p>
+            <p className="excerpt">
               {blogpost[0].snippet}
-              <a>Read more</a>
+              <span>Read More</span>
             </p>
+            <div className="author-box">
+              <img src={authorpic} alt="author" />
+              <div className="author-info">
+                <p className="author">{blogpost[0].author}</p>
+                <p className="headline">{blogpost[0].headline}</p>
+              </div>
+            </div>
           </div>
           <aside className="other-post">{ListOfOtherPost}</aside>
         </section>

@@ -3,10 +3,10 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 132px 80px;
+  padding: 120px 105px;
   gap: 10px;
   position: relative;
-  height: 650px;
+  height: 750px;
   background: #ffffff;
 }
 
@@ -17,9 +17,6 @@
   padding: 0px;
   gap: 96px;
   height: 701px;
-
-  /* Inside auto layout */
-
   flex: none;
   order: 0;
   flex-grow: 0;
@@ -28,11 +25,13 @@
 .heading {
   text-align: center;
   width: 600px;
+  margin: 0px;
 }
 
 .heading h2 {
   font-weight: 700;
   font-size: 45px;
+  margin: 0px;
 }
 
 .heading p {
@@ -50,4 +49,100 @@
   padding: 0px;
   gap: 30px;
   height: 486px;
+  margin: 0px;
+}
+
+.tag {
+  text-align: center;
+  width: 92px;
+  height: 26px;
+  padding: 4px 12px;
+  color: #f09000;
+  background: #ffebcc;
+  border-radius: 4px;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 30px;
+}
+
+.excerpt {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 30px;
+  width: 629px;
+  height: 64px;
+  color: #8a8a8a;
+}
+
+.excerpt span {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 32px;
+  color: #3d7d57;
+}
+
+.author-box {
+  display: flex;
+  flex-direction: row;
+  padding: 0px;
+  gap: 14px;
+  width: 302px;
+  height: 70px;
+}
+
+.author-info {
+  display: flex;
+  /* margin: 0px; */
+  flex-direction: column;
+  justify-content: center;
+}
+
+.author {
+  font-weight: 700;
+  font-size: 18px;
+  margin: 0px;
+}
+
+.headline {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 161.8%;
+  color: #8a8a8a;
+  margin: 0px;
+}
+
+.featured-posts {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 48px;
+}
+
+.post-tag {
+  font-weight: 400;
+  font-size: 14px;
+  text-align: center;
+  width: 70px;
+  height: 18px;
+  padding: 4px 12px;
+  color: #950952;
+  background-color: #fce6f2;
+  border-radius: 4px;
+  margin-top: 0px;
+}
+
+.featured-posts h3 {
+  margin: 0px;
+}
+
+.post-author {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  color: #8a8a8a;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
 }
