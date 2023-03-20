@@ -5,6 +5,7 @@ const appError = require('../utils/appError')
 const logger = require('../utils/logger')
 const bcrypt = require('bcrypt')
 const crypto = require('crypto')
+const { promisify } = require('util')
 const Email = require('../utils/email')
 const tokens = require('../utils/tokens')
 const User = require('../models/user.model')
@@ -117,32 +118,36 @@ exports.login = async (req,res) => {
     })
 }
 
-exports.authorize = async (req,res,next) => {
-    // get token from authorization header
-    const authHeader = req.headers.authorization;
-    if(!authHeader){
-        return res.status(403).json({
-            status: 403,
-            message: 'FORBIDDEN'
-        })
+exports.authorize = async (req, res, next) => {
+    let token;
+    if (process.env.NODE_ENV === "development") {
+      const authHeader = req.headers.authorization;
+      if (!authHeader)
+        throw new appError("You are not logged in, Please Login Again", 403);
+  
+      //Save token from authHeader if available
+      token = authHeader.split(" ")[1];
+    } else if (process.env.NODE_ENV === "production") {
+      const cookieValue = req.cookies.jwt;
+      if (!cookieValue)
+        throw new appError("You are not logged in, Please Login Again", 403);
+  
+      //SAVE TOKEN FROM COOKIE
+      token = req.cookies.jwt;
     }
-
-    const token = authHeader.split(' ')[1];
-
+  
     // verify token
-    const verifyToken = jwt.verify(token, process.env.JWT_SECRET);
-
-    // check if user exists
+    const verifyToken = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
+  
     const currentUser = await User.findById(verifyToken.userId)
-    // const currentUser = await User.findOne(verifyToken.user_id)
-    if(!currentUser){
-        return next(new appError('Session expired, Login again!'))
+  
+    if (!currentUser){
+      throw new appError("Account Not Found, Please Login again!", 404);
     }
-
-    // add user to req object
-    req.user = currentUser; 
-    next()
-}
+    //Add user to req object
+    req.user = currentUser;
+    next();
+}  
 
 exports.completeRegistration = async (req, res) => {
     
