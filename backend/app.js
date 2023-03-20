@@ -1,43 +1,29 @@
 const express = require('express')
 const app = express()
 const cookieParser = require('cookie-parser')
-const session = require('express-session');
 const cors = require('cors')
-
 
 const appError = require('./utils/appError')
 const logger = require('./utils/logger')
 const morganMiddleWare = require('./utils/morgan')
 const globalErrorHandler = require('./controllers/error.controller');
 
-// routes import
 const userRoute = require('./routes/user.route')
 const profileRoute = require('./routes/profile.route')
 const accountRoute = require('./routes/account.route')
 
-// VIEWS
 app.set('views', 'views')
 app.set('view engine', 'ejs')
 app.use(express.static('views'))
 
-// MORGAN MIDDLEWARE
 app.use(morganMiddleWare)
 
-// PARSE REQ.BODY
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }))
 
-// CORS
 app.use(cors());
-// COOKIE PARSER
-app.use(cookieParser());
 
-// SESSION
-app.use(session({
-    secret: process.env.SESSION_SECRET,
-    resave: false,
-    saveUninitialized: false
-})); 
+app.use(cookieParser());
 
 // ROUTES
 app.use('/auth/', userRoute)
@@ -47,10 +33,6 @@ app.use('/api/v1/account', accountRoute)
 // home route
 app.get('/', (req,res) => { 
     res.send("welcome to the findmytherapist app \n <a href='/auth/google' data-prompt='select_account'>Continue with Google</a>") 
-})
-
-app.get('/yo', (req,res) => {
-    res.redirect('/auth/register/google')
 })
 
 

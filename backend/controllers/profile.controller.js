@@ -8,15 +8,18 @@ const User = require('../models/user.model')
 
 // each user can create a profile just once and edit thereafter
 exports.createProfile = async (req, res) => {
-    // GET REQ.USER
     const userId = req.user.id
-    // GET REQ BODY
     const body = req.body
-    // GET FILEPATH
     const filePath = req.file.path
+
     // check if user has setup profile already
     const oldProfile = await Profile.findOne({ user: userId })
-    if(oldProfile) throw new appError('Forbidden', 403)
+    if(oldProfile){
+        return res.status(403).json({
+            status: 'fail',
+            message: 'Profile already created. '
+        })
+    }
     
     // FIND USER
     const user = await User.findById(userId)
@@ -53,10 +56,6 @@ exports.updateProfile = async (req, res) => {
     // GET FILEPATH
     const filePath = req.file?.path
     let uploadPic;
-    // if(file){
-    //     const filePath = file.path
-    //     uploadPic = await uploadToCloudinary(filePath)
-    // }
     
     // UPDATE PROFILE 
     if(profileToUpdate.user._id == userId){
@@ -82,11 +81,7 @@ exports.getOwnerProfile = async (req, res) => {
     const userId = req.user.id
     
     // FIND MHP'S PROFILE WITH ID
-    // const userProfileId = req.params.userProfileId
-    // const profile = await Profile.findById(profileId).populate('user')
     const profile = await Profile.findOne({ user: userId }).populate('user')
-    // .findOne({user: userId})  //.populate('user')
-    
 
     res.json(profile)
 }
