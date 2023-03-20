@@ -3,8 +3,61 @@
   flex-direction: row;
   align-items: flex-start;
   padding: 132px 80px;
-  gap: 165px;
+  gap: 80px;
   position: relative;
   height: 827px;
   background: #060809;
+  color: white;
+}
+
+.qtns-title {
+  width: 507px;
+  margin-bottom: 0px;
+}
+
+.qtns-title h2 {
+  font-weight: 700;
+  font-size: 45px;
+}
+.qtns-title p {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 23px;
+  width: 507px;
+}
+
+.qtn-item {
+  border-bottom: 1px solid #1f1f1f;
+  padding: 32px 16px;
+  width: 550px;
+}
+
+.qtn-item h3 {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 23px;
+}
+
+.qtn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.answers {
+  display: none;
+}
+
+.show-text {
+  background: #1a1c1f;
+  border-radius: 6px;
+  margin-bottom: 20px;
+}
+
+.show-text .answers {
+  display: block;
+}
+
+.show-text .arrow {
+  transform: rotate(180deg);
 }
