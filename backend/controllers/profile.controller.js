@@ -9,8 +9,10 @@ const User = require('../models/user.model')
 // each user can create a profile just once and edit thereafter
 exports.createProfile = async (req, res) => {
     const userId = req.user.id
-    const body = req.body
-    const filePath = req.file.path
+    const body = req.body;
+    const filePath = req.file?.path;
+    
+    const defaultProfileURL = 'https://st3.depositphotos.com/1767687/16607/v/450/depositphotos_166074422-stock-illustration-default-avatar-profile-icon-grey.jpg'
 
     // check if user has setup profile already
     const oldProfile = await Profile.findOne({ user: userId })
@@ -23,37 +25,40 @@ exports.createProfile = async (req, res) => {
     
     // FIND USER
     const user = await User.findById(userId)
-    const uploadPic = await uploadToCloudinary(filePath)
+    let uploadPic;
+    if(filePath){
+        uploadPic = await uploadToCloudinary(filePath)
+    }
+    
     // CREATE PROFILE OBJ
     const profile = await Profile.create({
         bio: req.body.bio,
         gender: req.body.gender,
         ...body,
-        profilePic: uploadPic,
+        profilePic: uploadPic ?? defaultProfileURL,
         user: user
     })
     
     res.status(201).json({
         status: 'success',
         message: 'profile successfully created',
-        data: { profile }
+        data: profile 
     })
 }
 
 // UPDATE PROFILE
 exports.updateProfile = async (req, res) => {
-    // GET PROFILE OWNER ID  
+      
     const userId = req.user.id
-    // GET PROFILE ID
+    
     const profileId = req.params.profileId.trim()
-    // profileId.trim()
-    // GET PROFILE
+   
     const profileToUpdate = await Profile.findById(profileId)
     if(!profileToUpdate) throw new appError('Profile not found', 404)
 
-    // GET BODY
+
     const body = req.body
-    // GET FILEPATH
+    
     const filePath = req.file?.path
     let uploadPic;
     
@@ -67,7 +72,7 @@ exports.updateProfile = async (req, res) => {
         res.status(200).json({
             status: 'success',
             message: 'Profile updated successfully',
-            data: { update }
+            data: update 
         })
     }else{
         return new appError('Unauthorized', 403)
