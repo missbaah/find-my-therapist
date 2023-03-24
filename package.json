@@ -1,7 +1,7 @@
 {
   "homepage": "https://missbaah.github.io/find-my-therapist/",
   "name": "find-my-therapist",
-  "private": true,
+  "private": false,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
