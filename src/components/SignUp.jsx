@@ -10,6 +10,11 @@ const SignUp = ({ showSignUp }) => {
     setStepNum(stepNum + 1);
   };
 
+  const handleBack = (e) => {
+    e.preventDefault();
+    setStepNum(stepNum - 1);
+  };
+
   const FormBody = () => {
     if (stepNum == 1) {
       return <Step1 />;
@@ -19,34 +24,45 @@ const SignUp = ({ showSignUp }) => {
   };
 
   return (
-    <main className={`${showSignUp ? "active" : ""} blanket`}>
+    <main className={`${showSignUp ? "active" : ""} blanket one`}>
       <form>
-        <h3>Sign Up as a MHP</h3>
-        <p>Step {stepNum}</p>
-        <div className="progressbar"></div>
+        <div className="heading">
+          <h3>Sign Up as a MHP</h3>
+          <p className="step">Step {stepNum}</p>
+          <div className="progressbar">
+            <div
+              style={{ background: stepNum == 1 ? "#3d7d57" : "#3d7d57" }}
+            ></div>
+            <div
+              style={{ background: stepNum == 1 ? "#D9D9D9" : "#3d7d57" }}
+            ></div>
+          </div>
+        </div>
+
         <section className="Body">{FormBody()}</section>
-        <section>
-          <section
-            className="login-options"
-            style={{ display: stepNum == 1 ? "block" : "none" }}
-          >
-            <button onClick={handleNext}>Next </button>
-            <p className="social-text">OR use your Social</p>
-            <button className="socials">Login with Google</button>
-            <p className="redirect">
-              Already have an account? <span>Login here</span>{" "}
-            </p>
-          </section>
-          <section
-            className="login-options"
-            style={{ display: stepNum == 1 ? "none" : "block" }}
-          >
-            <button>Complete sign up</button>
-            <button>Back</button>
-            <p className="redirect">
-              Already have an account? <span>Login here</span>{" "}
-            </p>
-          </section>
+
+        <section
+          className="signup-options"
+          style={{ display: stepNum == 1 ? "flex" : "none" }}
+        >
+          <button onClick={handleNext} className="login">
+            Next{" "}
+          </button>
+          <p className="social-text">OR use your Social</p>
+          <button className="socials">Sign up with Google</button>
+          <p className="redirect">
+            Already have an account? <span>Login here</span>{" "}
+          </p>
+        </section>
+        <section
+          className="login-options"
+          style={{ display: stepNum == 1 ? "none" : "block" }}
+        >
+          <button>Complete sign up</button>
+          <button onClick={handleBack}>Back</button>
+          <p className="redirect">
+            Already have an account? <span>Login here</span>{" "}
+          </p>
         </section>
       </form>
     </main>

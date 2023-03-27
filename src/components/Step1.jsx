@@ -5,7 +5,7 @@ const Step1 = () => {
     <section className="input-box">
       <div>
         <label>Name</label>
-        <input type="email" placeholder="eg. Grace Ashley" />
+        <input type="text" placeholder="eg. Grace Ashley" />
       </div>
       <div>
         <label>Email</label>
@@ -13,11 +13,11 @@ const Step1 = () => {
       </div>
       <div>
         <label>Password</label>
-        <input type="email" placeholder="example@info.com" />
+        <input type="password" placeholder="##########" />
       </div>
       <div>
         <label>Confirm Password</label>
-        <input type="email" placeholder="example@info.com" />
+        <input type="password" placeholder="##########" />
       </div>
     </section>
   );
