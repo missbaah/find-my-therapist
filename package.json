@@ -1,13 +1,10 @@
 {
-  "homepage": "https://missbaah.github.io/find-my-therapist/",
   "name": "find-my-therapist",
   "private": false,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "predeploy" : "npm run build",
-    "deploy" : "gh-pages -d dist",
     "build": "vite build",
     "preview": "vite preview"
   },
