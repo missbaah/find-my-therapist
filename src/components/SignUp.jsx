@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Step1, Step2, Successful } from "../components";
 import "../assets/Forms.css";
 
@@ -10,8 +10,6 @@ const SignUp = ({ showSignUp }) => {
     setStepNum(stepNum + 1);
   };
 
-  const handleSignUp = () => {};
-
   const handleBack = (e) => {
     e.preventDefault();
     setStepNum(stepNum - 1);
@@ -22,14 +20,20 @@ const SignUp = ({ showSignUp }) => {
       return <Step1 />;
     } else if (stepNum == 2) {
       return <Step2 />;
+    } else if (stepNum == 3) {
+      return <Successful />;
     }
   };
 
   return (
     <main className={`${showSignUp ? "active" : ""} blanket one`}>
-      <form>
-        <div className="heading">
+      <form style={{ background: stepNum == 3 ? "none" : "flex" }}>
+        <div
+          className="heading"
+          style={{ display: stepNum == 3 ? "none" : "flex" }}
+        >
           <h3>Sign Up as a MHP</h3>
+
           <p className="step">Step {stepNum}</p>
           <div className="progressbar">
             <div
@@ -56,9 +60,9 @@ const SignUp = ({ showSignUp }) => {
         </section>
         <section
           className="signup-options"
-          style={{ display: stepNum == 1 ? "none" : "flex" }}
+          style={{ display: stepNum == 1 || stepNum == 3 ? "none" : "flex" }}
         >
-          <button className="login" onClick={handleSignUp}>
+          <button className="login" onClick={handleNext}>
             Complete sign up
           </button>
           <button onClick={handleBack} className="back-btn">

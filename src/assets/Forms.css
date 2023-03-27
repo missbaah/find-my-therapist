@@ -4,9 +4,9 @@
 
 .active {
   display: block;
-  height: 1192px;
+  height: 1371px;
   background: rgba(0, 0, 0, 0.6);
-  width: 100vw;
+  width: 100%;
   position: absolute;
   left: 0px;
   top: 0px;
@@ -170,4 +170,49 @@
 }
 .blanket form .checkbox {
   width: 20px;
+}
+
+.success-container {
+  padding: 32px;
+  background: #ffffff;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+}
+
+.success-container .congrats {
+  background: #f3f7f5;
+  width: 159px;
+  height: 159px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.congrats span {
+  transform: scale(4.5);
+}
+
+.success-container h4 {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 30px;
+  margin: 0px;
+}
+
+.success-container p {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 161.8%;
+  text-align: center;
+  color: #8a8a8a;
+  margin: 0px;
+}
+
+.success-info {
+  gap: 12px;
 }
