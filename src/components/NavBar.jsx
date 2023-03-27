@@ -1,13 +1,14 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import "../assets/NavBar.css";
-import { Login } from "../components";
+import { Login, SignUp } from "../components";
 
 const NavBar = () => {
-  const [showLogin, setShowLogin] = useState(false);
+  // const [showLogin, setShowLogin] = useState(false);
+  const [showSignUp, setShowSignUp] = useState(false);
 
-  const handleLogin = () => {
-    setShowLogin((showLogin) => !showLogin);
+  const handleSignUp = () => {
+    setShowSignUp((showSignUp) => !showSignUp);
   };
 
   return (
@@ -30,10 +31,10 @@ const NavBar = () => {
         </Link>
       </section>
 
-      <button className="link3 login" onClick={handleLogin}>
-        Therapist Login
+      <button className="link3 login" onClick={handleSignUp}>
+        Therapist SignUp
       </button>
-      <Login showLogin={showLogin} />
+      <SignUp showSignUp={showSignUp} />
     </nav>
   );
 };

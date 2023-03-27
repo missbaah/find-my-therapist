@@ -5,7 +5,7 @@ const Login = ({ showLogin }) => {
     <main className={`${showLogin ? "active" : ""} blanket`}>
       <form>
         <section className="input-box">
-          <h2>Login as a MHP</h2>
+          <h3>Login as a MHP</h3>
           <div>
             <label>Email</label>
             <input type="email" placeholder="example@info.com" />

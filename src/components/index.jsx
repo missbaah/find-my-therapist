@@ -5,4 +5,8 @@ export { default as SearchBar } from "./SearchBar.jsx";
 export { default as DisplayCard } from "./DisplayCard.jsx";
 export { default as CrisisBanner } from "./CrisisBanner.jsx";
 export { default as BlogSpace } from "./BlogSpace.jsx";
+export { default as SignUp } from "./SignUp.jsx";
+export { default as Step1 } from "./Step1.jsx";
+export { default as Step2 } from "./Step2.jsx";
+export { default as Successful } from "./Successful.jsx";
 export { default as Login } from "./Login.jsx";
