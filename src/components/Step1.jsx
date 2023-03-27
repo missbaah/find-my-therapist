@@ -5,19 +5,31 @@ const Step1 = () => {
     <section className="input-box">
       <div>
         <label>Name</label>
-        <input type="text" placeholder="eg. Grace Ashley" />
+        <input type="text" placeholder="eg. Grace Ashley" autoComplete="name" />
       </div>
       <div>
         <label>Email</label>
-        <input type="email" placeholder="example@info.com" />
+        <input
+          type="email"
+          placeholder="example@info.com"
+          autoComplete="email"
+        />
       </div>
       <div>
         <label>Password</label>
-        <input type="password" placeholder="##########" />
+        <input
+          type="password"
+          placeholder="##########"
+          autoComplete="password"
+        />
       </div>
       <div>
         <label>Confirm Password</label>
-        <input type="password" placeholder="##########" />
+        <input
+          type="password"
+          placeholder="##########"
+          autoComplete="password"
+        />
       </div>
     </section>
   );

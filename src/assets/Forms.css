@@ -87,6 +87,13 @@
   line-height: 20px;
 }
 
+.back-btn {
+  color: #3d7d57;
+  background: #ffffff;
+  border-radius: 10px;
+  border: 1px solid #3d7d57;
+}
+
 .blanket form input {
   border: 1px solid #e0e0e0;
   border-radius: 6px;
@@ -150,4 +157,17 @@
   border: none;
   background: none;
   color: #3d7d57;
+}
+
+.privacy-checkbox {
+  display: flex;
+  margin-top: 30px;
+}
+
+.privacy-checkbox span {
+  margin-left: 15px;
+  color: #8a8a8a;
+}
+.blanket form .checkbox {
+  width: 20px;
 }

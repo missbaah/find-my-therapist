@@ -10,6 +10,8 @@ const SignUp = ({ showSignUp }) => {
     setStepNum(stepNum + 1);
   };
 
+  const handleSignUp = () => {};
+
   const handleBack = (e) => {
     e.preventDefault();
     setStepNum(stepNum - 1);
@@ -38,9 +40,7 @@ const SignUp = ({ showSignUp }) => {
             ></div>
           </div>
         </div>
-
         <section className="Body">{FormBody()}</section>
-
         <section
           className="signup-options"
           style={{ display: stepNum == 1 ? "flex" : "none" }}
@@ -55,11 +55,15 @@ const SignUp = ({ showSignUp }) => {
           </p>
         </section>
         <section
-          className="login-options"
-          style={{ display: stepNum == 1 ? "none" : "block" }}
+          className="signup-options"
+          style={{ display: stepNum == 1 ? "none" : "flex" }}
         >
-          <button>Complete sign up</button>
-          <button onClick={handleBack}>Back</button>
+          <button className="login" onClick={handleSignUp}>
+            Complete sign up
+          </button>
+          <button onClick={handleBack} className="back-btn">
+            Back
+          </button>
           <p className="redirect">
             Already have an account? <span>Login here</span>{" "}
           </p>
