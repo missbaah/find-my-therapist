@@ -19,8 +19,16 @@ nav .name {
   font-size: 14px;
   line-height: 18px;
   color: #000000;
+  text-align: left;
 }
 
+.profile-body .profile-title {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  color: #000000;
+  text-align: left;
+}
 .profile-body {
   display: flex;
   flex-direction: column;
@@ -61,12 +69,104 @@ nav .name {
 .setup-progress {
   width: 107px;
   height: 6px;
-  background: #3d7d57;
   border-radius: 6px;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
 }
 
 .body button {
   width: 465px;
   height: 54px;
   border-radius: 4px;
+}
+
+.body button:disabled {
+  background-color: #538568;
+}
+
+.photo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 85px;
+  height: 85px;
+  background: #d9d9d9;
+  border-radius: 50%;
+}
+
+.photo input {
+  display: none;
+}
+
+.upload {
+  display: flex;
+  gap: 12px;
+}
+
+.upload aside {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  justify-content: center;
+  gap: 4px;
+}
+.upload aside p {
+  text-align: left;
+  margin: 0;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.upload aside .header {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  color: #000000;
+}
+
+.setup1 {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.item label {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  color: #000000;
+}
+
+input[type="text" i] {
+  padding: 1px 2px;
+  width: 465px;
+  height: 112px;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+}
+
+.item select {
+  width: 465px;
+  height: 56px;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  padding: 16px;
+}
+.item select option {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  color: #000000;
 }

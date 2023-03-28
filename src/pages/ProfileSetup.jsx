@@ -30,8 +30,14 @@ const ProfileSetup = () => {
       return <Setup2 />;
     } else if (num == 2) {
       return <Setup3 />;
-    } else if (num == 4) {
+    } else if (num == 3) {
       return <Setup4 />;
+    }
+  };
+
+  const disabled = () => {
+    if (num < 0) {
+      return true;
     }
   };
 
@@ -51,22 +57,46 @@ const ProfileSetup = () => {
           <div className="heading">
             <p className="step">Step {num + 1}</p>
             <div className="progress">
-              <div className="setup-progress"></div>
-              <div className="setup-progress"></div>
-              <div className="setup-progress"></div>
-              <div className="setup-progress"></div>
+              <div
+                className="setup-progress"
+                style={{ background: num == 0 ? "#3d7d57" : "#3d7d57" }}
+              ></div>
+              <div
+                className="setup-progress"
+                style={{
+                  background: num == 0 ? "#D9D9D9" : "#3d7d57",
+                }}
+              ></div>
+              <div
+                className="setup-progress"
+                style={{
+                  background: num == 0 || num == 1 ? "#D9D9D9" : "#3d7d57",
+                }}
+              ></div>
+              <div
+                className="setup-progress"
+                style={{
+                  background:
+                    num == 0 || num == 1 || num == 2 ? "#D9D9D9" : "#3d7d57",
+                }}
+              ></div>
             </div>
             <h3>{SetupTitle[num]}</h3>
-            <section className="body">
-              {SetupBody()}
-              <button onClick={handleNext} className="login">
-                Next
-              </button>
-              <button onClick={handleBack} className="login">
-                Back
-              </button>
-            </section>
           </div>
+          <section className="body">
+            {SetupBody()}
+            <button onClick={handleNext} disabled={num > 2} className="login">
+              Next
+            </button>
+            <button
+              style={{ display: num == 0 ? "none" : "block" }}
+              onClick={handleBack}
+              disabled={num < 1}
+              className="back-btn"
+            >
+              Back
+            </button>
+          </section>
         </section>
       </section>
     </main>
