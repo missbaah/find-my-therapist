@@ -11,7 +11,6 @@ const Successful = () => {
         <h4>Registration Successful</h4>
         <p>Now let's setup your profile</p>
       </div>
-      <button className="login">Set up profile</button>
     </section>
   );
 };

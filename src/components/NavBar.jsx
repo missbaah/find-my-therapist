@@ -4,9 +4,12 @@ import "../assets/NavBar.css";
 import { Login, SignUp } from "../components";
 
 const NavBar = () => {
-  // const [showLogin, setShowLogin] = useState(false);
   const [showSignUp, setShowSignUp] = useState(false);
+  const [showLogin, setShowLogin] = useState(false);
 
+  const handleLogin = () => {
+    setShowLogin((showLogin) => !showLogin);
+  };
   const handleSignUp = () => {
     setShowSignUp((showSignUp) => !showSignUp);
   };
@@ -30,10 +33,15 @@ const NavBar = () => {
           FAQs
         </Link>
       </section>
-
-      <button className="link3 login" onClick={handleSignUp}>
-        Therapist SignUp
-      </button>
+      <section className="link-btns ">
+        <button className="link3" onClick={handleSignUp}>
+          Therapist SignUp
+        </button>
+        <button className="link3" onClick={handleLogin}>
+          Therapist Login
+        </button>
+      </section>
+      <Login showLogin={showLogin} />
       <SignUp showSignUp={showSignUp} />
     </nav>
   );

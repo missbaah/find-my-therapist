@@ -42,15 +42,21 @@ a {
   flex-grow: 0;
 }
 
+.link-btns {
+  display: flex;
+  gap: 32px;
+  flex: none;
+  order: 2;
+  flex-grow: 0;
+}
+
 .link3 {
   padding: 16px;
   background: rgba(176, 176, 176, 0.5);
   border-radius: 4px;
-  flex: none;
-  order: 2;
-  flex-grow: 0;
   font-weight: 700;
   line-height: 20px;
   border: none;
   color: #ffffff;
+  border: none;
 }

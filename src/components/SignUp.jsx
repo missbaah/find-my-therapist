@@ -1,14 +1,10 @@
 import { useState } from "react";
 import { Step1, Step2, Successful, Login } from "../components";
+import { Link } from "react-router-dom";
 import "../assets/Forms.css";
 
 const SignUp = ({ showSignUp }) => {
   const [stepNum, setStepNum] = useState(1);
-  const [showLogin, setShowLogin] = useState(false);
-
-  const handleLogin = () => {
-    setShowLogin((showLogin) => !showLogin);
-  };
 
   const handleNext = (e) => {
     e.preventDefault();
@@ -28,6 +24,7 @@ const SignUp = ({ showSignUp }) => {
     } else if (stepNum == 3) {
       return <Successful />;
     }
+    return;
   };
 
   return (
@@ -59,9 +56,10 @@ const SignUp = ({ showSignUp }) => {
           </button>
           <p className="social-text">OR use your Social</p>
           <button className="socials">Sign up with Google</button>
-          <p className="redirect">
-            Already have an account? <span>Login here</span>{" "}
-          </p>
+          <button className="redirect">
+            {" "}
+            Already have an account? <span>Login here</span>
+          </button>{" "}
         </section>
         <section
           className="signup-options"
@@ -73,11 +71,15 @@ const SignUp = ({ showSignUp }) => {
           <button onClick={handleBack} className="back-btn">
             Back
           </button>
-          <button className="redirect" onClick={handleLogin}>
+          <button className="redirect">
             {" "}
             Already have an account? <span>Login here</span>
           </button>{" "}
-          <Login showLogin={showLogin} />
+        </section>
+        <section style={{ display: stepNum == 3 ? "block" : "none" }}>
+          <Link className="profile-setup" to="/profilesetup">
+            Set up profile
+          </Link>{" "}
         </section>
       </form>
     </main>
