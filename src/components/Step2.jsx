@@ -6,10 +6,10 @@ const Step2 = () => {
       <section className="input-box">
         <div>
           <label>Lisensing Board</label>
-          <input type="text" placeholder="eg. Ghana Psychological Counsel" />
+          <input type="text" placeholder="eg. Ghana Psychology Council" />
         </div>
         <div>
-          <label>Lisensing Number</label>
+          <label>Lisense Number</label>
           <input type="text" placeholder="eg. GPC59329859" />
         </div>
         <div>

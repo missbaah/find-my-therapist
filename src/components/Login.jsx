@@ -20,7 +20,7 @@ const Login = ({ showLogin }) => {
           <p className="social-text">OR use your Social</p>
           <button className="socials">Login with Google</button>
           <p className="redirect">
-            Don't have an account? <span>Sign up here</span>{" "}
+            Don't have an account? <button>Sign up here</button>{" "}
           </p>
         </section>
         <button className="dismiss-btn" onClick={() => showLogin(false)}>

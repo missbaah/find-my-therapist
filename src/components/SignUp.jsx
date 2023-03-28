@@ -1,9 +1,14 @@
-import { useEffect, useState } from "react";
-import { Step1, Step2, Successful } from "../components";
+import { useState } from "react";
+import { Step1, Step2, Successful, Login } from "../components";
 import "../assets/Forms.css";
 
 const SignUp = ({ showSignUp }) => {
   const [stepNum, setStepNum] = useState(1);
+  const [showLogin, setShowLogin] = useState(false);
+
+  const handleLogin = () => {
+    setShowLogin((showLogin) => !showLogin);
+  };
 
   const handleNext = (e) => {
     e.preventDefault();
@@ -68,9 +73,11 @@ const SignUp = ({ showSignUp }) => {
           <button onClick={handleBack} className="back-btn">
             Back
           </button>
-          <p className="redirect">
-            Already have an account? <span>Login here</span>{" "}
-          </p>
+          <button className="redirect" onClick={handleLogin}>
+            {" "}
+            Already have an account? <span>Login here</span>
+          </button>{" "}
+          <Login showLogin={showLogin} />
         </section>
       </form>
     </main>
