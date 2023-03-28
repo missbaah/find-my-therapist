@@ -10,3 +10,7 @@ export { default as Step1 } from "./Step1.jsx";
 export { default as Step2 } from "./Step2.jsx";
 export { default as Successful } from "./Successful.jsx";
 export { default as Login } from "./Login.jsx";
+export { default as Setup1 } from "./Setup components/Setup1";
+export { default as Setup2 } from "./Setup components/Setup2";
+export { default as Setup3 } from "./Setup components/Setup3";
+export { default as Setup4 } from "./Setup components/Setup4";
