@@ -5,10 +5,9 @@ const Schema = mongoose.Schema
 const objectId = mongoose.Schema.Types.ObjectId
 
 const profileSchema = new Schema({
-    // id: { type: objectId } ,
     bio: { type: String },
     profilePic: { type: String },
-    gender: { type: String, enum: ['male', 'female'] },
+    gender: { type: String, },
     workAddress: { type: String },
     experience: { type: Number },
     specialties: [ String ],
@@ -24,7 +23,7 @@ const profileSchema = new Schema({
     linkedin: { type: String },
     snapchat: { type: String },
     user: { 
-        type: mongoose.Schema.Types.ObjectId, //objectId,
+        type: mongoose.Schema.Types.ObjectId, 
         ref: 'User',
     },
 },
@@ -33,6 +32,7 @@ const profileSchema = new Schema({
     toJSON: { virtuals: true },
     toObject: { virtuals: true },
 })
+
 
 profileSchema.pre(/^find/, function (next){
     this.populate({

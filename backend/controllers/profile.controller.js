@@ -88,5 +88,59 @@ exports.getOwnerProfile = async (req, res) => {
     // FIND MHP'S PROFILE WITH ID
     const profile = await Profile.findOne({ user: userId }).populate('user')
 
-    res.json(profile)
+    res.status(200).json({
+        message: 'success',
+        data: profile
+    })
 }
+
+
+// GET MHPs Profiles
+exports.getMHP = async (req, res) => {
+    const { query } = req;
+    const { name, specialty, region, town, page = 1, per_page = 5 } = query;
+  
+    //  match criteria for the $lookup stage
+    const matchCriteria = {};
+    if (name) {
+      const [firstName, lastName] = name.split(' ');
+      matchCriteria['user.firstName'] = firstName;
+      matchCriteria['user.lastName'] = lastName;
+    }
+    if (specialty) matchCriteria.specialties = specialty;
+    if (region) matchCriteria.region = region;
+    if (town) matchCriteria.town = town;
+  
+    // Define the $lookup stage
+    const lookupStage = {
+      $lookup: {
+        from: 'users',
+        localField: 'user',
+        foreignField: '_id',
+        as: 'user',
+      },
+    };
+  
+    // $match stage to filter based on the match criteria
+    const matchStage = { $match: matchCriteria };
+  
+    //  $skip and $limit stages for pagination
+    const skipStage = { $skip: (page - 1) * per_page };
+    const limitStage = { $limit: per_page };
+  
+    // aggregation pipeline to fetch the profiles
+    const profiles = await Profile.aggregate([
+      lookupStage,
+      matchStage,
+      skipStage,
+      limitStage,
+    ]);
+  
+    res.status(200).json({
+      status: 'success',
+      page: page,
+      result: profiles.length,
+      data: profiles,
+    });
+  };
+  
