@@ -27,9 +27,19 @@ const SignUp = ({ showSignUp }) => {
     return;
   };
 
+  function handleSubmit(event) {
+    event.preventDefault();
+    // get form data and submit it to server
+    // redirect to profile page
+    window.location.href = "/profilesetup";
+  }
+
   return (
     <main className={`${showSignUp ? "active" : ""} blanket one`}>
-      <form style={{ background: stepNum == 3 ? "none" : "flex" }}>
+      <form
+        onSubmit={handleSubmit}
+        style={{ width: stepNum == 3 ? "550px" : "561px" }}
+      >
         <div
           className="heading"
           style={{ display: stepNum == 3 ? "none" : "flex" }}
@@ -77,9 +87,7 @@ const SignUp = ({ showSignUp }) => {
           </button>{" "}
         </section>
         <section style={{ display: stepNum == 3 ? "block" : "none" }}>
-          <Link className="profile-setup" to="/profilesetup">
-            Set up profile
-          </Link>{" "}
+          <button type="submit">Set up Profile</button>
         </section>
       </form>
     </main>

@@ -9,7 +9,7 @@ const Setup1 = () => {
         <p className="profile-title">Upload profile photo</p>
         <div className="upload">
           <label className="photo">
-            <input type="file" />
+            <input type="file" required />
             <FontAwesomeIcon icon={faUser} size="2xl" />
           </label>
           <aside>
@@ -20,11 +20,11 @@ const Setup1 = () => {
       </section>
       <div className="item 1">
         <label>Bio</label>
-        <input type="text" className="bio" />
+        <input type="text" className="bio" required />
       </div>
       <div className="item 2">
         <label>Gender</label>
-        <select>
+        <select required>
           <option value="">Prefer not to say</option>
           <option value="">Female</option>
           <option value="">Male</option>

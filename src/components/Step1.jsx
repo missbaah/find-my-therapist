@@ -5,7 +5,12 @@ const Step1 = () => {
     <section className="input-box">
       <div>
         <label>Name</label>
-        <input type="text" placeholder="eg. Grace Ashley" autoComplete="name" />
+        <input
+          type="text"
+          placeholder="eg. Grace Ashley"
+          autoComplete="name"
+          required
+        />
       </div>
       <div>
         <label>Email</label>
@@ -13,6 +18,7 @@ const Step1 = () => {
           type="email"
           placeholder="example@info.com"
           autoComplete="email"
+          required
         />
       </div>
       <div>
@@ -21,6 +27,7 @@ const Step1 = () => {
           type="password"
           placeholder="##########"
           autoComplete="password"
+          required
         />
       </div>
       <div>
@@ -29,6 +36,7 @@ const Step1 = () => {
           type="password"
           placeholder="##########"
           autoComplete="password"
+          required
         />
       </div>
     </section>

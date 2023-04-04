@@ -6,6 +6,13 @@ import { Setup1, Setup2, Setup3, Setup4, Setup5 } from "../components";
 const ProfileSetup = () => {
   const [num, setNum] = useState(0);
 
+  function handleSubmit(e) {
+    e.preventDefault();
+    // get form data and submit it to server
+    // redirect to profile page
+    window.location.href = "/profile";
+  }
+
   const handleNext = (e) => {
     e.preventDefault();
     setNum(num + 1);
@@ -55,7 +62,7 @@ const ProfileSetup = () => {
         </div>
       </nav>
       <section className="profile-body">
-        <section className="setup-card">
+        <form className="setup-card">
           <div
             className="heading"
             style={{ display: num == 4 ? "none" : "block" }}
@@ -110,14 +117,14 @@ const ProfileSetup = () => {
                     ? "none"
                     : "block",
               }}
-              onClick={handleBack}
+              onSubmit={handleSubmit}
               disabled={num < 1}
               className="login"
             >
               Check out profile
             </button>
           </section>
-        </section>
+        </form>
       </section>
     </main>
   );
