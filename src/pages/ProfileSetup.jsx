@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "../assets/ProfileSetup.css";
-import { Setup1, Setup2, Setup3, Setup4 } from "../components";
+import { Setup1, Setup2, Setup3, Setup4, Setup5 } from "../components";
 
 const ProfileSetup = () => {
   const [num, setNum] = useState(0);
@@ -32,6 +32,8 @@ const ProfileSetup = () => {
       return <Setup3 />;
     } else if (num == 3) {
       return <Setup4 />;
+    } else if (num == 4) {
+      return <Setup5 />;
     }
   };
 
@@ -54,7 +56,10 @@ const ProfileSetup = () => {
       </nav>
       <section className="profile-body">
         <section className="setup-card">
-          <div className="heading">
+          <div
+            className="heading"
+            style={{ display: num == 4 ? "none" : "block" }}
+          >
             <p className="step">Step {num + 1}</p>
             <div className="progress">
               <div
@@ -85,16 +90,31 @@ const ProfileSetup = () => {
           </div>
           <section className="body">
             {SetupBody()}
-            <button onClick={handleNext} disabled={num > 2} className="login">
-              Next
-            </button>
+            <div style={{ display: num == 4 ? "none" : "block" }}>
+              <button onClick={handleNext} disabled={num > 4} className="login">
+                Next
+              </button>
+              <button
+                style={{ display: num == 0 ? "none" : "block" }}
+                onClick={handleBack}
+                disabled={num < 1}
+                className="back-btn"
+              >
+                Back
+              </button>
+            </div>
             <button
-              style={{ display: num == 0 ? "none" : "block" }}
+              style={{
+                display:
+                  num == 0 || num == 1 || num == 2 || num == 3
+                    ? "none"
+                    : "block",
+              }}
               onClick={handleBack}
               disabled={num < 1}
-              className="back-btn"
+              className="login"
             >
-              Back
+              Check out profile
             </button>
           </section>
         </section>

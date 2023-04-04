@@ -42,17 +42,18 @@ nav .name {
   line-height: 46px;
   align-self: flex-start;
   color: #000000;
+  margin-bottom: 0px;
 }
 
 .setup-card {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   padding: 48px 48px 32px;
   gap: 32px;
-  width: 561px;
-  height: 745px;
+  /* width: 561px; */
+  height: auto;
   background: #ffffff;
   border: 1px solid #e0e0e0;
   border-radius: 10px;
@@ -149,7 +150,7 @@ nav .name {
   color: #000000;
 }
 
-input[type="text" i] {
+.item .bio {
   padding: 1px 2px;
   width: 465px;
   height: 112px;
@@ -169,4 +170,47 @@ input[type="text" i] {
   font-size: 14px;
   line-height: 18px;
   color: #000000;
+}
+
+.setup2 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 24px;
+  width: 465px;
+}
+
+.address input {
+  height: 58px;
+  width: 446px;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  padding-left: 16px;
+}
+
+.office-hrs div {
+  display: flex;
+  gap: 14px;
+}
+
+.office-hrs input {
+  width: 207px;
+  height: 58px;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  padding-left: 16px;
+}
+
+.setup3 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 32px;
+}
+.setup4 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 32px;
 }

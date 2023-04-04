@@ -20,7 +20,7 @@ const Setup1 = () => {
       </section>
       <div className="item 1">
         <label>Bio</label>
-        <input type="text" />
+        <input type="text" className="bio" />
       </div>
       <div className="item 2">
         <label>Gender</label>

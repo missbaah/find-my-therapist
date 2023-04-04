@@ -123,6 +123,9 @@
   color: #ffffff;
   border: none;
   margin: 10px 0px;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 18px;
 }
 
 .socials {
@@ -216,6 +219,8 @@
 }
 
 .success-info {
+  display: flex;
+  flex-direction: column;
   gap: 12px;
 }
 
