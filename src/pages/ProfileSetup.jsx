@@ -10,7 +10,7 @@ const ProfileSetup = () => {
     e.preventDefault();
     // get form data and submit it to server
     // redirect to profile page
-    window.location.href = "/profile";
+    window.location.href = "/profiledashboard";
   }
 
   const handleNext = (e) => {
@@ -62,7 +62,7 @@ const ProfileSetup = () => {
         </div>
       </nav>
       <section className="profile-body">
-        <form className="setup-card">
+        <form className="setup-card" onSubmit={handleSubmit}>
           <div
             className="heading"
             style={{ display: num == 4 ? "none" : "block" }}
@@ -117,7 +117,7 @@ const ProfileSetup = () => {
                     ? "none"
                     : "block",
               }}
-              onSubmit={handleSubmit}
+              type="submit"
               disabled={num < 1}
               className="login"
             >

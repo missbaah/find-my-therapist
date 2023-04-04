@@ -1,5 +1,13 @@
 import "./App.css";
-import { Home, About, Professionals, FAQs, Blog, ProfileSetup } from "./pages";
+import {
+  Home,
+  About,
+  Professionals,
+  FAQs,
+  Blog,
+  ProfileSetup,
+  Profile,
+} from "./pages";
 import { Route, Routes } from "react-router-dom";
 
 function App() {
@@ -9,7 +17,7 @@ function App() {
         <Route index element={<Home />} />
         <Route path="/" element={<Home />} />
         <Route path="/profilesetup" element={<ProfileSetup />} />
-        <Route path="/profile" element={<ProfileSetup />} />
+        <Route path="/profiledashboard" element={<ProfileDashBoard />} />
         <Route path="/about" element={<About />} />
         <Route path="/professionals" element={<Professionals />} />
         <Route path="/blog" element={<Blog />} />

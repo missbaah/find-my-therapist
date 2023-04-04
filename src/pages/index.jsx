@@ -4,4 +4,4 @@ export { default as Blog } from "./Blog.jsx";
 export { default as FAQs } from "./FAQs.jsx";
 export { default as Professionals } from "./Professionals.jsx";
 export { default as ProfileSetup } from "./ProfileSetup.jsx";
-export { default as Profile } from "./Profile.jsx";
+export { default as ProfileDashBoard } from "./ProfileDashBoard.jsx";
