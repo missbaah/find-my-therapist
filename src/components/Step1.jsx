@@ -4,13 +4,17 @@ const Step1 = () => {
   return (
     <section className="input-box">
       <div>
-        <label>Name</label>
+        <label>First Name</label>
         <input
           type="text"
-          placeholder="eg. Grace Ashley"
+          placeholder="eg. Grace "
           autoComplete="name"
           required
         />
+      </div>
+      <div>
+        <label>Last Name</label>
+        <input type="text" placeholder="eg. Doe" autoComplete="name" required />
       </div>
       <div>
         <label>Email</label>

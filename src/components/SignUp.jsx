@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Step1, Step2, Successful, Login } from "../components";
-import { Link } from "react-router-dom";
 import "../assets/Forms.css";
 
 const SignUp = ({ showSignUp }) => {
