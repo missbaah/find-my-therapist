@@ -41,9 +41,9 @@ const createSendToken = (user,statusCode, res) => {
 exports.signup = async (req,res) => {
 
     // GET USER INPUT FROM REQ.BODY
-    const { firstName, lastName, email, password, passwordConfirm, licensingBoard, licenseNumber } = req.body
+    const { firstName, lastName, email, password, passwordConfirm, telephoneNumber, workNumber, licensingBoard, licenseNumber } = req.body
     // ENSURE ALL FIELDS ARE COMPLETED
-    if(!(firstName ?? lastName ?? email ?? password ?? passwordConfirm ?? licensingBoard ?? licenseNumber)){
+    if(!(firstName && lastName && email && password && passwordConfirm && licensingBoard && licenseNumber && telephoneNumber && workNumber)){
         throw new appError('All fields must be filled', 400)
     }
     
@@ -68,8 +68,10 @@ exports.signup = async (req,res) => {
         lastName, 
         email, 
         password,
-        licensingBoard, //check if valid
-        licenseNumber   //check if valid
+        telephoneNumber, 
+        workNumber,
+        licensingBoard, 
+        licenseNumber   
     })
 
     try{

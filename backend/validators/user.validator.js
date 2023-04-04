@@ -16,13 +16,17 @@ const userValidator = Joi.object({
                 .pattern(new RegExp("^[a-zA-Z0-9]{3,30}$"))
                 .min(8)
                 .required(),
+    passwordConfirm: Joi.ref('password'),
     licensingBoard: Joi.string()
                 .required(),
     licenseNumber: Joi.string()
                 .required(),
-    passwordConfirm: Joi.ref('password'),
     passwordResetToken: [Joi.string(), Joi.number()],
     passwordResetExpires: Joi.date(),
+    telephoneNumber: Joi.string().pattern(/^((\+|00)233|0)?\d{9}$/).required(),
+    workNumber: Joi.string().pattern(/^((\+|00)233|0)?\d{9}$/).required(),
+    // telephoneNumber: Joi.string().pattern((/^\+\d{1,3}\d{3,}$/)).required,
+    // workNumber: Joi.string().pattern((/^\+\d{1,3}\d{3,}$/)).required,
 })
 
 const loginValidator = Joi.object({

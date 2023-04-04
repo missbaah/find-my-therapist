@@ -9,6 +9,8 @@ const userSchema = new Schema({
     lastName: { type: String, required: true},
     email: { type: String, required: true},
     password: { type: String,  minlength: 8},
+    telephoneNumber: { type: String},
+    workNumber: { type: String},
     licensingBoard: { type: String, required: true },
     licenseNumber: { type: String, required: true, unique: true },
     passwordToken: { type: String },
@@ -33,13 +35,6 @@ userSchema.pre('save',
         next()
     }
 )
-
-// userSchema.pre(/^find/, function (next){
-//     this.populate({
-//         path: 'profile',
-//     })
-//     next()
-// })
 
 // To ensure user logging in has the correct credentials
 userSchema.methods.isValidPassword = async (password) => {

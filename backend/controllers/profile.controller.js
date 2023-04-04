@@ -98,7 +98,7 @@ exports.getOwnerProfile = async (req, res) => {
 // GET MHPs Profiles
 exports.getMHP = async (req, res) => {
     const { query } = req;
-    const { name, specialty, region, town, page = 1, per_page = 5 } = query;
+    const { name, specialty, region, town, page = 1, per_page = 10 } = query;
   
     //  match criteria for the $lookup stage
     const matchCriteria = {};
@@ -110,15 +110,17 @@ exports.getMHP = async (req, res) => {
     if (specialty) matchCriteria.specialties = specialty;
     if (region) matchCriteria.region = region;
     if (town) matchCriteria.town = town;
-  
-    // Define the $lookup stage
+
     const lookupStage = {
-      $lookup: {
-        from: 'users',
-        localField: 'user',
-        foreignField: '_id',
-        as: 'user',
-      },
+        $lookup: {
+          from: 'users',
+          let: { userId: '$user' },
+          pipeline: [
+            { $match: { $expr: { $eq: ['$_id', '$$userId'] } } },
+            { $project: { password: 0 } },
+          ],
+          as: 'user',
+        },
     };
   
     // $match stage to filter based on the match criteria
