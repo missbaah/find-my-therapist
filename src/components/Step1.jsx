@@ -1,6 +1,37 @@
 import React from "react";
+import { useContext } from "react";
+import SignupContext from "../context/SignupContext";
 
 const Step1 = () => {
+  const { person, setPerson } = useContext(SignupContext);
+
+  const handleFirstName = (e) => {
+    setPerson({ ...person, firstName: e.target.value });
+  };
+
+  const handleLastName = (e) => {
+    setPerson({ ...person, lastName: e.target.value });
+  };
+
+  const handleEmail = (e) => {
+    setPerson({ ...person, email: e.target.value });
+  };
+
+  const handlePassword = (e) => {
+    setPerson({ ...person, password: e.target.value });
+  };
+
+  const handleConfirmPassword = (e) => {
+    setPerson({ ...person, confirmPassword: e.target.value });
+  };
+
+  // const validatePasswords = () => {
+  //   if (person.password !== person.confirmPassword) {
+  //     alert("Passwords do not match");
+  //     return;
+  //   }
+  // };
+
   return (
     <section className="input-box">
       <div>
@@ -8,13 +39,18 @@ const Step1 = () => {
         <input
           type="text"
           placeholder="eg. Grace "
-          autoComplete="name"
-          required
+          autoComplete="First Name"
+          onChange={handleFirstName}
         />
       </div>
       <div>
         <label>Last Name</label>
-        <input type="text" placeholder="eg. Doe" autoComplete="name" required />
+        <input
+          type="text"
+          placeholder="eg. Doe"
+          autoComplete="Last Name"
+          onChange={handleLastName}
+        />
       </div>
       <div>
         <label>Email</label>
@@ -22,7 +58,7 @@ const Step1 = () => {
           type="email"
           placeholder="example@info.com"
           autoComplete="email"
-          required
+          onChange={handleEmail}
         />
       </div>
       <div>
@@ -31,7 +67,7 @@ const Step1 = () => {
           type="password"
           placeholder="##########"
           autoComplete="password"
-          required
+          onChange={handlePassword}
         />
       </div>
       <div>
@@ -40,7 +76,7 @@ const Step1 = () => {
           type="password"
           placeholder="##########"
           autoComplete="password"
-          required
+          onChange={handleConfirmPassword}
         />
       </div>
     </section>

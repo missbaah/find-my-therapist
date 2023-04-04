@@ -6,7 +6,7 @@ import {
   FAQs,
   Blog,
   ProfileSetup,
-  Profile,
+  ProfileDashBoard,
 } from "./pages";
 import { Route, Routes } from "react-router-dom";
 

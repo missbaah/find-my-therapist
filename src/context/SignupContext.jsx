@@ -1,6 +1,5 @@
-import React from "react";
-import { useContext } from "react";
+import { createContext } from "react";
 
-const SignupContext = useContext({});
+const SignupContext = createContext({});
 
 export default SignupContext;
