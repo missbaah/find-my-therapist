@@ -75,15 +75,16 @@ exports.signup = async (req,res) => {
     })
 
     try{
+        // add later setting up email
         // SEND WELCOME MAIL
-        const url = `${req.protocol}://${req.get('host')}/api/v1/profile`
-        await new Email(user, url).sendWelcome()
+        // const url = `${req.protocol}://${req.get('host')}/api/v1/profile`
+        // await new Email(user, url).sendWelcome()
         // CREATE and SEND TOken
         createSendToken(user, 200, res);
     }catch(err){
         res.status(500).json({
-            status: 'Failed',
-            message: `Account created successfully but we encountered an error sending email`,
+            status: 'failed',
+            // message: `Account created successfully but we encountered an error sending email`,
             error: `${err.message}`
         });
     }
@@ -170,14 +171,14 @@ exports.completeRegistration = async (req, res) => {
         // createSendToken(user, 200, res)
         try{
             // SEND WELCOME MAIL
-            const url = `${req.protocol}://${req.get('host')}/api/v1/profile`
-            await new Email(user, url).sendWelcome()
+            // const url = `${req.protocol}://${req.get('host')}/api/v1/profile`
+            // await new Email(user, url).sendWelcome()
             // CREATE and SEND TOken
             createSendToken(user, 200, res);
         }catch(err){
             res.status(500).json({
-                status: 'Failed',
-                message: `Account created successfully but we encountered an error sending email`,
+                status: 'failed',
+                // message: `Account created successfully but we encountered an error sending email`,
                 error: `${err.message}`
             });
         }

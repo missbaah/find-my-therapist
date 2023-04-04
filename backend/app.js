@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 const cookieParser = require('cookie-parser')
 const cors = require('cors')
+const Sentry = require('@sentry/node')
 
 const appError = require('./utils/appError')
 const logger = require('./utils/logger')
@@ -12,9 +13,13 @@ const userRoute = require('./routes/user.route')
 const profileRoute = require('./routes/profile.route')
 const accountRoute = require('./routes/account.route')
 
+Sentry.init({dsn: process.env.SENTRY_DSN})
+
 app.set('views', 'views')
 app.set('view engine', 'ejs')
 app.use(express.static('views'))
+
+app.use(Sentry.Handlers.requestHandler())
 
 app.use(morganMiddleWare)
 
@@ -35,6 +40,9 @@ app.get('/', (req,res) => {
     res.send("welcome to the findmytherapist app \n <a href='/auth/google' data-prompt='select_account'>Continue with Google</a>") 
 })
 
+app.get("/debug-sentry", function mainHandler(req, res) {
+    throw new appError("My first Sentry error!");
+});
 
 // change req time format
 app.use((req,res,next) => {
@@ -46,6 +54,16 @@ app.use((req,res,next) => {
 app.all('*', (req,res,next) =>{
     return new appError(`${req.originalUrl} not found on server`, 404)
 })
+
+app.use(Sentry.Handlers.errorHandler())
+
+app.use(function onError(err, req, res, next) {
+    // The error id is attached to `res.sentry` to be returned
+    // and optionally displayed to the user for support.
+    res.statusCode = 500;
+    res.end(res.sentry + "\n");
+    console.log(err)
+});
 
 // register global error handler
 app.use(globalErrorHandler)
