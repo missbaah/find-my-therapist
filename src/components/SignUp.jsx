@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Step1, Step2, Successful, Login } from "../components";
 import SignupContext from "../context/SignupContext";
-// import axios from "axios";
 import "../assets/Forms.css";
 
 const SignUp = ({ showSignUp }) => {
@@ -10,15 +9,36 @@ const SignUp = ({ showSignUp }) => {
     lastName: "",
     email: "",
     password: "",
-    confirmPassword: "",
-    lisensingBoard: "",
-    lisenceNumber: "",
+    passwordConfirm: "",
+    licensingBoard: "",
+    licenseNumber: "",
   });
   const [stepNum, setStepNum] = useState(1);
 
   const handleNext = (e) => {
     e.preventDefault();
-    setStepNum(stepNum + 1);
+    let requiredFields = [];
+    const requiredFields1 = [
+      "firstName",
+      "lastName",
+      "email",
+      "password",
+      "passwordConfirm",
+    ];
+    const requiredFields2 = ["licensingBoard", "licenseNumber", "checkbox"];
+    if (stepNum == 1) {
+      requiredFields = [...requiredFields1];
+    } else if (stepNum == 2) {
+      requiredFields = [...requiredFields2];
+    }
+
+    const isFilled = requiredFields.every((field) => person[field] !== "");
+
+    if (isFilled) {
+      setStepNum(stepNum + 1);
+    } else {
+      alert("Please fill in all required fields.");
+    }
   };
 
   const handleBack = (e) => {
@@ -37,37 +57,34 @@ const SignUp = ({ showSignUp }) => {
     return;
   };
 
-  function handleSubmit(event) {
-    event.preventDefault();
-    // axios
-    //   .post("https://find-therapist-api.onrender.com/auth/signup", person)
-    //   .then((response) => console.log(response))
-    //   .catch((error) => console.error(error));
-    fetch("https://find-therapist-api.onrender.com/auth/signup", {
-      action: "https://find-therapist-api.onrender.com/",
-      method: "POST",
-      body: JSON.stringify(person),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("API response:", data);
-      })
-      .catch((error) => {
-        console.error("API error:", error);
-      });
-
-    console.log(person);
+  function handleSubmit() {
     // get form data and submit it to server
+    // fetch("https://find-therapist-api.onrender.com/auth/signup", {
+    //   method: "POST",
+    //   body: JSON.stringify(person),
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    // })
+    //   .then((response) => response.json())
+    //   .then((data) => {
+    //     console.log("API response:", data);
+    //   })
+    //   .catch((error) => {
+    //     console.error("API error:", error);
+    //   });
+
     // redirect to profile page
-    // window.location.href = "/profilesetup";
+    window.location.href = "/profilesetup";
   }
 
   return (
     <main className={`${showSignUp ? "active" : ""} blanket one`}>
       <SignupContext.Provider value={{ person, setPerson }}>
         <form
-          action=""
+          action="https://find-therapist-api.onrender.com/auth/signup"
           onSubmit={handleSubmit}
+          noValidate
           style={{ width: stepNum == 3 ? "550px" : "561px" }}
         >
           <div

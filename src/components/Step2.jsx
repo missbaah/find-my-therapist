@@ -2,14 +2,17 @@ import React from "react";
 import { useContext } from "react";
 import SignupContext from "../context/SignupContext";
 
-const Step2 = () => {
+const Step2 = ({ onNext }) => {
   const { person, setPerson } = useContext(SignupContext);
 
+  // const requiredFields2 = ["licensingBoard", "licenseNumber"];
+  // const isFilled2 = requiredFields2.every((field) => person[field] !== "");
+
   const handleLisensing = (e) => {
-    setPerson({ ...person, lisensingBoard: e.target.value });
+    setPerson({ ...person, licensingBoard: e.target.value });
   };
   const handleLisenseNum = (e) => {
-    setPerson({ ...person, lisenceNumber: e.target.value });
+    setPerson({ ...person, licenseNumber: e.target.value });
   };
 
   // const handleWorkNum = (e) => {
@@ -24,7 +27,9 @@ const Step2 = () => {
           <input
             type="text"
             placeholder="eg. Ghana Psychology Council"
+            name={person.licensingBoard}
             onChange={handleLisensing}
+            required
           />
         </div>
         <div>
@@ -32,7 +37,9 @@ const Step2 = () => {
           <input
             type="text"
             placeholder="eg. GPC59329859"
+            name={person.licenseNumber}
             onChange={handleLisenseNum}
+            required
           />
         </div>
         <div>
@@ -40,20 +47,17 @@ const Step2 = () => {
           <input
             type="tel"
             placeholder="eg. 05*******0"
+            name="personal tel"
             autoComplete="telephone"
           />
         </div>
         <div>
           <label>Work Telephone Number</label>
-          <input
-            type="tel"
-            placeholder="eg. 05*******0"
-            // onChange={handleWorkNum}
-          />
+          <input type="tel" placeholder="eg. 05*******0" name="work tel" />
         </div>
       </section>
       <div className="privacy-checkbox">
-        <input type="checkbox" className="checkbox" />
+        <input type="checkbox" className="checkbox" name="checkbox" required />
         <span>I agree to MHP's friendly privacy policy.</span>
       </div>
     </section>
