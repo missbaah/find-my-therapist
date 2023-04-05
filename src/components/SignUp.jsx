@@ -59,20 +59,22 @@ const SignUp = ({ showSignUp }) => {
 
   function handleSubmit() {
     // get form data and submit it to server
-    // fetch("https://find-therapist-api.onrender.com/auth/signup", {
-    //   method: "POST",
-    //   body: JSON.stringify(person),
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    // })
-    //   .then((response) => response.json())
-    //   .then((data) => {
-    //     console.log("API response:", data);
-    //   })
-    //   .catch((error) => {
-    //     console.error("API error:", error);
-    //   });
+    fetch("https://find-therapist-api.onrender.com/auth/signup", {
+      method: "POST",
+      body: JSON.stringify(person),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("API response:", data);
+      })
+      .catch((error) => {
+        console.error("API error:", error);
+      });
+
+    console.log(JSON.stringify(person));
 
     // redirect to profile page
     window.location.href = "/profilesetup";
