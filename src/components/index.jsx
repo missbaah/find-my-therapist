@@ -15,3 +15,5 @@ export { default as Setup2 } from "./Setup components/Setup2";
 export { default as Setup3 } from "./Setup components/Setup3";
 export { default as Setup4 } from "./Setup components/Setup4";
 export { default as Setup5 } from "./Setup components/Setup5";
+export { default as AboutSection } from "./AboutSection.jsx";
+export { default as Reviews } from "./Reviews.jsx";

@@ -1,5 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
+import { Reviews, AboutSection } from "../components";
 import profpic from "../images/pic.png";
 import coverpic from "../images/CoverPhoto.png";
 import "../assets/ProfileDashBoard.css";
@@ -34,7 +35,11 @@ const ProfileDashBoard = () => {
           </div>
           <button className="edit-btn">Edit Profile</button>
         </section>
-        <div className="person-bio"></div>
+        <div className="person-bio">
+          <Link to="aboutsection">About</Link>
+          <Link to="reviews">Reviews</Link>
+          <Outlet />
+        </div>
       </section>
     </main>
   );

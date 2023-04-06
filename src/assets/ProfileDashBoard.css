@@ -21,6 +21,11 @@ p {
   font-size: 36px;
   line-height: 46px;
 }
+.about-bio h5 {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 32px;
+}
 
 .green {
   font-weight: 700;
@@ -38,7 +43,7 @@ p {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 100px 80px;
+  padding: 100px 160px;
   gap: 12px;
   position: absolute;
   left: 0px;
@@ -89,4 +94,84 @@ p {
   border-radius: 4px;
   border: none;
   color: #ffffff;
+}
+
+.person-bio a {
+  color: #8a8a8a;
+}
+
+.about-bio {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 32px;
+}
+
+.bio-1 p {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 26px;
+  color: #8a8a8a;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.bio-2 {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 48px;
+}
+
+.bio-3 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 48px;
+}
+
+.location-availability {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 56px;
+}
+
+.exp p {
+  color: #f09000;
+  background: #fff3e1;
+  border-radius: 4px;
+  padding: 12px 16px;
+}
+
+.icons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px;
+  gap: 16.78px;
+}
+
+.mail div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border: 0.915393px solid #e0e0e0;
+  padding: 10.9847px 14.6463px;
+  gap: 14.65px;
+}
+
+.location-name {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 12px 16px;
+  gap: 10px;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
 }
