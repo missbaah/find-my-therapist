@@ -1,0 +1,92 @@
+.coverpic img {
+  width: 100%;
+}
+
+.profile-nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 18px 80px;
+  align-items: center;
+  height: 88px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.dashboard-body h3,
+p {
+  margin: 0px;
+}
+
+.dashboard-body h3 {
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 46px;
+}
+
+.green {
+  font-weight: 700;
+  font-size: 18px;
+  color: #3d7d57;
+}
+
+.ash {
+  font-weight: 700;
+  font-size: 18px;
+  color: #8a8a8a;
+}
+
+.dashboard-body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 100px 80px;
+  gap: 12px;
+  position: absolute;
+  left: 0px;
+  top: 88px;
+}
+
+.person-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 120px 0px 50px;
+  gap: 386px;
+}
+
+.sub-1 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px;
+  gap: 32px;
+
+  width: 535px;
+  height: 232px;
+}
+
+.sub-2 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 7px;
+}
+
+.person-title {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 7px;
+  width: 271px;
+}
+
+.edit-btn {
+  width: 106px;
+  height: 46px;
+  background: #3d7d57;
+  border-radius: 4px;
+  border: none;
+  color: #ffffff;
+}
