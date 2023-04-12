@@ -1,11 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, Outlet } from "react-router-dom";
-import { Reviews, AboutSection } from "../components";
 import profpic from "../images/pic.png";
 import coverpic from "../images/CoverPhoto.png";
 import "../assets/ProfileDashBoard.css";
 
 const ProfileDashBoard = () => {
+  const [style, setStyle] = useState(false);
+
+  const handleClick = (e) => {
+    const link = e.target;
+    if (link) {
+      setStyle(true);
+    }
+  };
   return (
     <main>
       {" "}
@@ -36,10 +43,22 @@ const ProfileDashBoard = () => {
           <button className="edit-btn">Edit Profile</button>
         </section>
         <div className="person-bio">
-          <Link to="aboutsection">About</Link>
-          <Link to="reviews">Reviews</Link>
-          <Outlet />
+          <Link
+            to="aboutsection"
+            onClick={handleClick}
+            className={style ? "active-link" : ""}
+          >
+            About
+          </Link>
+          <Link
+            to="reviews"
+            onClick={handleClick}
+            className={style ? "active-link" : ""}
+          >
+            Reviews
+          </Link>
         </div>
+        <Outlet />
       </section>
     </main>
   );
