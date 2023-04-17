@@ -297,3 +297,36 @@ p {
   line-height: 161.8%;
   color: #8a8a8a;
 }
+
+/* --------------------- */
+/* Edit Profile*/
+
+.blanket {
+  display: none;
+}
+
+.show-edit {
+  display: block;
+  height: 1371px;
+  background: rgba(0, 0, 0, 0.6);
+  max-width: 100vw;
+  width: 100vw;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* .blanket form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 54px 48px 32px;
+  gap: 20px;
+  background: #ffffff;
+  border-radius: 10px;
+  width: 561px;
+  height: auto;
+} */

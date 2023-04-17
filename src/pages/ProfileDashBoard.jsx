@@ -3,9 +3,11 @@ import { Link, Outlet } from "react-router-dom";
 import profpic from "../images/pic.png";
 import coverpic from "../images/CoverPhoto.png";
 import "../assets/ProfileDashBoard.css";
+import EditProfile from "../components/ProfileDashboard/EditProfile";
 
 const ProfileDashBoard = () => {
   const [style, setStyle] = useState(false);
+  const [showEdit, setShowEdit] = useState(false);
 
   const handleClick = (e) => {
     const link = e.target;
@@ -13,6 +15,12 @@ const ProfileDashBoard = () => {
       setStyle(true);
     }
   };
+
+  const handleShowEdit = () => {
+    // console.log("clicked");
+    setShowEdit((showEdit) => !showEdit);
+  };
+
   return (
     <main>
       {" "}
@@ -40,7 +48,9 @@ const ProfileDashBoard = () => {
               </div>
             </div>
           </div>
-          <button className="edit-btn">Edit Profile</button>
+          <button className="edit-btn" onClick={handleShowEdit}>
+            Edit Profile
+          </button>
         </section>
         <div className="person-bio">
           <Link
@@ -60,6 +70,7 @@ const ProfileDashBoard = () => {
         </div>
         <Outlet />
       </section>
+      <EditProfile showEdit={showEdit} />
     </main>
   );
 };
