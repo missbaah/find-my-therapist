@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { Step1, Step2, Successful, Login } from "../components";
-import SignupContext from "../context/SignupContext";
-import "../assets/Forms.css";
+import { Step1, Step2, Successful, Login } from "..";
+import SignupContext from "../../context/SignupContext";
+import "../../assets/Forms.css";
 
 const SignUp = ({ showSignUp }) => {
   const [person, setPerson] = useState({
