@@ -36,7 +36,7 @@ const ProfileDashBoard = () => {
       <div className="coverpic">
         <img src={coverpic} id="coverpic" alt="coverpic" />
       </div>
-      <section className="dashboard-body">
+      <section className="dashboard-section">
         <section className="person-info">
           <div className="sub-1">
             <img src={profpic} alt="profilepic" />

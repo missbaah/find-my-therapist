@@ -64,7 +64,7 @@ const ProfileSetup = () => {
       <section className="profile-body">
         <form className="setup-card" onSubmit={handleSubmit}>
           <div
-            className="heading"
+            className="heading-content"
             style={{ display: num == 4 ? "none" : "block" }}
           >
             <p className="step">Step {num + 1}</p>
