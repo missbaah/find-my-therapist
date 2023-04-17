@@ -6,7 +6,7 @@ import Setup3 from "../Setup components/Setup3";
 import Setup4 from "../Setup components/Setup4";
 
 const EditProfile = ({ showEdit }) => {
-  const [name, setName] = useState("");
+  const [name, setName] = useState("Personal");
 
   const FormBody = () => {
     if (name === "Personal") {
@@ -26,7 +26,7 @@ const EditProfile = ({ showEdit }) => {
   console.log(name);
 
   return (
-    <main className={`${showEdit ? "show-edit" : ""} blanket`}>
+    <main className={`${showEdit ? "show-edit" : ""} cover-blanket`}>
       <form>
         <h3>Update your profile</h3>
         <section className="edit-links">
