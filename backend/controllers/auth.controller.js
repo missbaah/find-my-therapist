@@ -44,12 +44,12 @@ exports.signup = async (req,res) => {
     const { firstName, lastName, email, password, passwordConfirm, telephoneNumber, workNumber, licensingBoard, licenseNumber } = req.body
     // ENSURE ALL FIELDS ARE COMPLETED
     if(!(firstName && lastName && email && password && passwordConfirm && licensingBoard && licenseNumber && telephoneNumber && workNumber)){
-        throw new appError('All fields must be filled', 400)
+        return res.status(400).json({message: 'All fields must be filled'})
     }
     
     // COMPARE PASSWORD and PASSWORD CONFIRM
     if(passwordConfirm !== password){
-        return new appError('Passwords must match', 400)
+        return res.status(400).json({message: 'Passwords must match'})
     }
 
     // CHECK VALIDITY OF LICENSING DETAILS
@@ -97,18 +97,18 @@ exports.login = async (req,res) => {
     
     // VALIDATE USER INPUT
     if(!(email && password)){
-        throw new appError('Fields cannot be empty')
+        return res.status(400).json({message: 'Fields cannot be empty'})
     }
     // CHECK IF DETAILS MATCH RECORDS IN DATABASE
     const user = await User.findOne({ email })
     
     if(!user){
-        throw new appError('User not found! Please sign up')
+        return res.status(400).json({message: 'User not found! Please sign up'})
     }
     
     //NOTIFY USERS WITH SOCIAL AUTH WHEN LOGGING IN
     if (user && !user.password)
-    throw new appError("User already exists. Please login using your socials",401);
+        return res.status(409).json({ message: "User already exists. Please login using your socials"});
 
     // compare password
     if(user && (await bcrypt.compare(password, user.password))){
@@ -126,14 +126,14 @@ exports.authorize = async (req, res, next) => {
     if (process.env.NODE_ENV === "development") {
       const authHeader = req.headers.authorization;
       if (!authHeader)
-        throw new appError("You are not logged in, Please Login Again", 403);
+        return res.status(403).json({message: "You are not logged in, Please Login Again"});
   
       //Save token from authHeader if available
       token = authHeader.split(" ")[1];
     } else if (process.env.NODE_ENV === "production") {
       const cookieValue = req.cookies.jwt;
       if (!cookieValue)
-        throw new appError("You are not logged in, Please Login Again", 403);
+        return res.status(400).json({message: "You are not logged in, Please Login Again"});
   
       //SAVE TOKEN FROM COOKIE
       token = req.cookies.jwt;
@@ -145,7 +145,7 @@ exports.authorize = async (req, res, next) => {
     const currentUser = await User.findById(verifyToken.userId)
   
     if (!currentUser){
-      throw new appError("Account Not Found, Please Login again!", 404);
+        return res.status(400).json({message: "Account Not Found, Please Login again!"});
     }
     //Add user to req object
     req.user = currentUser;
@@ -194,7 +194,7 @@ exports.forgotPassword = async (req, res) => {
     // 1. GET USER FROM EMAIL
     const email = req.body.email;
     const user = await User.findOne({email})
-    if(!user) throw new appError('No user with that email', 404)
+    if(!user) return res.status(400).json('No user with that email', 404)
  
     // 2. GENERATE RESET TOKEN & OTHER RETURNED VALUES
     const { resetToken, passwordToken, passwordResetExpires } = await tokens.createPasswordResetToken()
@@ -218,7 +218,7 @@ exports.forgotPassword = async (req, res) => {
             message: `Token sent to ${email}`,
         });
     }catch(err){
-        throw new appError('Error sending reset link, try again', 500)
+        return res.status(400).json({message: 'Error sending reset link, try again'})
     }
 }
 
@@ -235,7 +235,7 @@ exports.resetPassword = async(req, res) => {
     });
     // 2. Check if token exists or there is such a user
     if(!user){
-        throw new appError('Token Expired or Invalid Token, Request for a new token', 403);
+        return res.status(400).json({message: 'Token Expired or Invalid Token, Request for a new token'});
     }
     // 3. If user and token exists, update the new password
     user.password = req.body.password;
@@ -250,23 +250,23 @@ exports.resetPassword = async(req, res) => {
         // 5. Log user in and send jwt
         createSendToken(user, 200, res)
     }catch(err){
-        throw new appError('Password has been reset, but we are having an issue sending a mail. Please proceed to login', 500);
+        return res.status(400).json({message: 'Password has been reset, but we are having an issue sending a mail. Please proceed to login'});
     };
 };
 
-exports.getUser = async (req, res) => {
-    const { name } = req.query;
+// exports.getUser = async (req, res) => {
+//     const { name } = req.query;
     
-    const splitName = name.split(' ')
-    const firstName = splitName[0];
-    const lastName = splitName[1];
+//     const splitName = name.split(' ')
+//     const firstName = splitName[0];
+//     const lastName = splitName[1];
 
-    const user = await User.findOne({firstName: firstName, lastName: lastName})
+//     const user = await User.findOne({firstName: firstName, lastName: lastName})
     
-    if(user){
-       res.json(user) 
-    }else{
-        res.status(404).json({message: 'user not found'})
-    }
+//     if(user){
+//        res.json(user) 
+//     }else{
+//         res.status(404).json({message: 'user not found'})
+//     }
 
-}
+// }

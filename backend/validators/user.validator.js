@@ -40,10 +40,13 @@ exports.validateInputMW = async (req,res,next) => {
         await userValidator.validateAsync(userPayload);
         next();
     }catch(error){
-        next({
-            message: error.details[0].message,
-            status: 400
-        });
+        // next({
+        //     message: error.details[0].message,
+        //     status: 400
+        // });
+        return res.status(400).json({
+            message: error.details[0].message
+        })
     }
 }
 

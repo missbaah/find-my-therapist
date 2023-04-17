@@ -39,6 +39,6 @@ router.get('/logout', (req,res,next) => {
     return res.clearCookie('jwt').redirect('/');
 })
 
-router.get('/user', authController.getUser)
+// router.get('/user', authController.getUser)
 
 module.exports = router
