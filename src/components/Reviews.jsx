@@ -1,12 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import SingleReview from "./SingleReview";
 const Reviews = () => {
+  const [active, setActive] = useState(true);
+
   return (
-    <section>
-      <h4>Sort by</h4>
-      <button>All</button>
-      <button>Newest</button>
-      <button>Oldest</button>
+    <section className="reviews">
+      <div className="sort-nav">
+        <h4>Sort by</h4>
+        <div className="sort-btns">
+          <button className={active ? "sort-active" : ""}>All</button>
+          <button>Newest</button>
+          <button>Oldest</button>
+        </div>
+      </div>
       <SingleReview
         name="Emmanuel Acheampong"
         time="11 months ago"
