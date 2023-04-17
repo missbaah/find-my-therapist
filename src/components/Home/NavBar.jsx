@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import "../assets/NavBar.css";
-import { Login, SignUp } from "../components";
+import "../../assets/NavBar.css";
+import { Login, SignUp } from "..";
 
 const NavBar = () => {
   const [showSignUp, setShowSignUp] = useState(false);

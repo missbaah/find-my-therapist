@@ -94,6 +94,8 @@ p {
   height: 46px;
   background: #3d7d57;
   border-radius: 4px;
+  font-weight: 700;
+  font-size: 14px;
   border: none;
   color: #ffffff;
 }

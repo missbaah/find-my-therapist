@@ -1,7 +1,7 @@
-import "../assets/BlogSpace.css";
-import postImage from "../images/Image.png";
-import authorpic from "../images/authorpic.png";
-import BlogImage from "../images/BlogImage.png";
+import "../../assets/BlogSpace.css";
+import postImage from "../../images/Image.png";
+import authorpic from "../../images/authorpic.png";
+import BlogImage from "../../images/BlogImage.png";
 
 const BlogSpace = () => {
   const blogpost = [

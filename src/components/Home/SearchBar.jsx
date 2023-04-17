@@ -1,7 +1,7 @@
-import "../assets/SearchBar.css";
-import searchicon from "../images/search.png";
-import line from "../images/Line 1.png";
-import { regions } from "../data/regions";
+import "../../assets/SearchBar.css";
+import searchicon from "../../images/search.png";
+import line from "../../images/Line 1.png";
+import { regions } from "../../data/regions";
 import { useState } from "react";
 
 const SearchBar = () => {

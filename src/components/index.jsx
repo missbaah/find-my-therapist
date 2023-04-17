@@ -1,10 +1,10 @@
-export { default as NavBar } from "./NavBar.jsx";
-export { default as Footer } from "./Footer.jsx";
-export { default as Hero } from "./Hero.jsx";
-export { default as SearchBar } from "./SearchBar.jsx";
-export { default as DisplayCard } from "./DisplayCard.jsx";
-export { default as CrisisBanner } from "./CrisisBanner.jsx";
-export { default as BlogSpace } from "./BlogSpace.jsx";
+export { default as NavBar } from "./Home/NavBar.jsx";
+export { default as Footer } from "./Home/Footer.jsx";
+export { default as Hero } from "./Home/Hero.jsx";
+export { default as SearchBar } from "./Home/SearchBar.jsx";
+export { default as DisplayCard } from "./Home/DisplayCard.jsx";
+export { default as CrisisBanner } from "./Home/CrisisBanner.jsx";
+export { default as BlogSpace } from "./Home/BlogSpace.jsx";
 export { default as SignUp } from "./SignUp.jsx";
 export { default as Step1 } from "./Signup components/Step1.jsx";
 export { default as Step2 } from "./Signup components/Step2.jsx";

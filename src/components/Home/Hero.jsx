@@ -1,4 +1,4 @@
-import "../assets/Hero.css";
+import "../../assets/Hero.css";
 import SearchBar from "./SearchBar";
 
 const Hero = () => {

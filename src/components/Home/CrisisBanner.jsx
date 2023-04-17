@@ -1,4 +1,4 @@
-import "../assets/CrisisBanner.css";
+import "../../assets/CrisisBanner.css";
 
 const CrisisBanner = () => {
   return (

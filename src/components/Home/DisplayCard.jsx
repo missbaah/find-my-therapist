@@ -1,8 +1,8 @@
-import profilepic from "../images/profilepic.png";
-import previous from "../images/Previous.png";
-import next from "../images/Next.png";
+import profilepic from "../../images/profilepic.png";
+import previous from "../../images/Previous.png";
+import next from "../../images/Next.png";
 
-import "../assets/Professionals.css";
+import "../../assets/Professionals.css";
 
 const DisplayCard = () => {
   const profiles = [
