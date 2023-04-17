@@ -1,6 +1,5 @@
-import React from "react";
 import { useContext } from "react";
-import SignupContext from "../context/SignupContext";
+import SignupContext from "../../context/SignupContext";
 
 const Step1 = () => {
   const { person, setPerson } = useContext(SignupContext);

@@ -1,5 +1,3 @@
-import "../assets/Forms.css";
-
 const Successful = () => {
   return (
     <section className="success-container">
