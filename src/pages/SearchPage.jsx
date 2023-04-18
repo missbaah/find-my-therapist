@@ -1,5 +1,5 @@
 import React from "react";
-import { NavBarDark, SearchBarDark, SearchCard } from "../components";
+import { NavBarDark, SearchBarDark, SearchCard, Footer } from "../components";
 import "../assets/SearchPage.css";
 
 const SearchPage = () => {
@@ -17,10 +17,14 @@ const SearchPage = () => {
             <h4>Available Mental Health Personnels</h4>
             <section className="cards-display">
               <SearchCard />
+              <SearchCard />
+              <SearchCard />
+              <SearchCard />
             </section>
           </section>
         </div>
       </section>
+      <Footer />
     </main>
   );
 };
