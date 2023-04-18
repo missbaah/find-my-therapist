@@ -90,7 +90,7 @@ const SignUp = ({ showSignUp }) => {
           style={{ width: stepNum == 3 ? "550px" : "561px" }}
         >
           <div
-            className="heading"
+            className="heading-content"
             style={{ display: stepNum == 3 ? "none" : "flex" }}
           >
             <h3>Sign Up as a MHP</h3>

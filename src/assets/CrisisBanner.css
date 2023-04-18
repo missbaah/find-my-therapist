@@ -25,26 +25,16 @@
 }
 
 .crisis-text {
-  /* Auto layout */
-
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   padding: 0px;
   gap: 8px;
-
   width: 581px;
   height: 149px;
-
-  /* Inside auto layout */
-
-  flex: none;
-  order: 0;
-  flex-grow: 0;
 }
 
 .crisis-text h2 {
-  width: 293px;
   height: 57px;
   color: #ffffff;
   font-weight: 700;
