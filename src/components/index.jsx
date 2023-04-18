@@ -18,3 +18,4 @@ export { default as Setup5 } from "./Setup components/Setup5";
 export { default as AboutSection } from "./ProfileDashboard/AboutSection.jsx";
 export { default as Reviews } from "./ProfileDashboard/Reviews.jsx";
 export { default as NavBarDark } from "./SearchPage/NavBarDark.jsx";
+export { default as SearchBarDark } from "./SearchPage/SearchBarDark.jsx";
