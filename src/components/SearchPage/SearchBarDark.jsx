@@ -33,7 +33,7 @@ const SearchBarDark = () => {
 
   return (
     <section>
-      <form className="form">
+      <form className="search-form">
         <label className="item1">
           <img src={searchicon} alt="search-icon" id="search" />
           <input type="text" placeholder="Search by name or specialty" />
@@ -64,11 +64,10 @@ const SearchBarDark = () => {
           </select>
         </label>
         <label className="item4">
-          <select name="Town" id="town" defaultValue="option2">
+          <select name="Approach" id="approach" defaultValue="option2">
             <option id="label" value="option2" disabled hidden>
               Approach
             </option>
-            {ListOfTowns}
           </select>
         </label>
         <button onClick={handleSearchClick}>Search</button>
