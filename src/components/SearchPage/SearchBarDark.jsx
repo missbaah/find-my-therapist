@@ -63,6 +63,7 @@ const SearchBarDark = () => {
             {ListOfTowns}
           </select>
         </label>
+        <img src={line} alt="line" />
         <label className="item4">
           <select name="Approach" id="approach" defaultValue="option2">
             <option id="label" value="option2" disabled hidden>

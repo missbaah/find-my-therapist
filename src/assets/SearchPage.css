@@ -44,14 +44,13 @@
 }
 
 .action-btn {
+  padding: 16px;
+  background: none;
   border: 1px solid #3d7d57;
   border-radius: 4px;
-  padding: 16px;
   font-weight: 700;
-  font-size: 16px;
-  line-height: 20px;
+  /* line-height: 20px; */
   color: #3d7d57;
-  background: none;
 }
 
 /* ----------------------------------- */
@@ -74,13 +73,16 @@
   line-height: 46px;
 }
 
-/* .search-results {
-} */
+.search-body .line {
+  border-top: 1px solid #e0e0e0;
+  padding: 0px;
+}
 
 .search-results h4 {
   font-weight: 700;
   font-size: 24px;
   line-height: 30px;
+  padding: 48px 0px;
 }
 
 /* ------------------------------------ */
@@ -91,11 +93,59 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 12px 16px;
+  padding: 10px 16px;
   gap: 12px;
   background: #ffffff;
   border-radius: 12px;
   width: 1087px;
   border: 1px solid #e0e0e0;
   border-radius: 12px;
+  margin-bottom: 48px;
+}
+
+#search {
+  position: relative;
+  top: 6px;
+  left: 9px;
+}
+
+.search-form input {
+  border: none;
+  margin-left: 20px;
+  font-weight: 400;
+  font-size: 18px;
+  width: 243px;
+  height: 23px;
+}
+
+.search-form label {
+  font-weight: 400;
+  font-size: 18px;
+  color: #000000;
+}
+
+.search-form label select {
+  border: none;
+  font-size: 18px;
+  margin: 0px 30px;
+  width: 116px;
+}
+
+#approach {
+  width: 158px;
+}
+
+.search-form label option {
+  padding: 10px;
+  font-size: 18px;
+}
+
+.search-form button {
+  width: 141px;
+  height: 52px;
+  background: #3d7d57;
+  border-radius: 4px;
+  border: none;
+  color: #ffffff;
+  font-size: 16px;
 }

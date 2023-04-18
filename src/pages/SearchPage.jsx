@@ -11,6 +11,7 @@ const SearchPage = () => {
           <section className="search-sec">
             <h3>Find a mental health personnel now!</h3>
             <SearchBarDark />
+            <div className="line"></div>
           </section>
           <section className="search-results">
             <h4>Available Mental Health Personnels</h4>
