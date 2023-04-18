@@ -1,5 +1,5 @@
 import React from "react";
-import { NavBarDark, SearchBarDark } from "../components";
+import { NavBarDark, SearchBarDark, SearchCard } from "../components";
 import "../assets/SearchPage.css";
 
 const SearchPage = () => {
@@ -7,7 +7,7 @@ const SearchPage = () => {
     <main>
       <NavBarDark />
       <section className="search-body">
-        <div>
+        <div className="search-flex">
           <section className="search-sec">
             <h3>Find a mental health personnel now!</h3>
             <SearchBarDark />
@@ -15,7 +15,9 @@ const SearchPage = () => {
           </section>
           <section className="search-results">
             <h4>Available Mental Health Personnels</h4>
-            <div className="cards-display"></div>
+            <section className="cards-display">
+              <SearchCard />
+            </section>
           </section>
         </div>
       </section>

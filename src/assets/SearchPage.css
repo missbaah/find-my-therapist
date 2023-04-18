@@ -8,6 +8,7 @@
   padding: 18px 80px;
   gap: 200px;
   height: 88px;
+  border-bottom: 1px solid #e0e0e0;
 }
 
 .navbardark a {
@@ -62,7 +63,7 @@
   align-items: flex-start;
 }
 
-.search-body div {
+.search-flex {
   padding: 100px 80px;
 }
 
@@ -147,5 +148,141 @@
   border-radius: 4px;
   border: none;
   color: #ffffff;
+  font-size: 16px;
+}
+
+/* ----------------------------------- */
+/* Search Card Styles */
+
+.search-card {
+  width: 347px;
+  height: 398px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 24px;
+  gap: 32px;
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+}
+
+.card-title {
+  display: flex;
+  justify-content: space-between;
+  width: 340px;
+}
+
+.card-title h5,
+p {
+  margin: 0px;
+}
+
+.card-title h5 {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 32px;
+}
+
+.card-title p {
+  color: #8a8a8a;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.name-photo {
+  display: flex;
+}
+
+.title-icons {
+  display: flex;
+  gap: 12px;
+}
+
+.title-icons div {
+  width: 38px;
+  height: 38px;
+  background: #f3f7f5;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-hours {
+  width: 340px;
+  height: 31px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  gap: 10px;
+  background: rgba(216, 229, 221, 0.3);
+  border-radius: 4px;
+  color: #3d7d57;
+  font-weight: 700;
+  font-size: 13px;
+  padding: 6px 0px;
+}
+
+.card-details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 21px;
+}
+
+.detail {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 96px;
+  height: 26px;
+  width: 331px;
+}
+
+.contact {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 16px;
+}
+
+.card-mail {
+  width: 45.82px;
+  background: none;
+  padding: 9px;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+}
+
+.call {
+  width: 276px;
+  height: 48px;
+  background: #3d7d57;
+  border-radius: 4px;
+  border: none;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  color: #ffffff;
+}
+
+.detail div {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  color: #8a8a8a;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.card-yrs {
+  font-weight: 700;
   font-size: 16px;
 }
