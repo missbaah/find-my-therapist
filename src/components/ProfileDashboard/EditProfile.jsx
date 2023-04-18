@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "../../assets/ProfileDashBoard.css";
+// import { Setup1, Setup2, Setup3, Setup4 } from "../Setup components";
 import Setup1 from "../Setup components/Setup1";
 import Setup2 from "../Setup components/Setup2";
 import Setup3 from "../Setup components/Setup3";

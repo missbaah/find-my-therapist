@@ -26,6 +26,11 @@ const SearchBar = () => {
     return <option key={town}>{town}</option>;
   });
 
+  const handleSearchClick = (e) => {
+    e.preventDefault();
+    window.location.href = "./search";
+  };
+
   return (
     <section>
       <form className="form">
@@ -58,7 +63,7 @@ const SearchBar = () => {
             {ListOfTowns}
           </select>
         </label>
-        <button>Search</button>
+        <button onClick={handleSearchClick}>Search</button>
       </form>
     </section>
   );

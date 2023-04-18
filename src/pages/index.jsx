@@ -5,3 +5,4 @@ export { default as FAQs } from "./FAQs.jsx";
 export { default as Professionals } from "./Professionals.jsx";
 export { default as ProfileSetup } from "./ProfileSetup.jsx";
 export { default as ProfileDashBoard } from "./ProfileDashBoard.jsx";
+export { default as SearchPage } from "./SearchPage.jsx";
