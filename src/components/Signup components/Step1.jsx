@@ -76,7 +76,7 @@ const Step1 = () => {
           type="password"
           placeholder="##########"
           autoComplete="password"
-          name={person.passwordConfirm}
+          name={person.confirm_password}
           onChange={handleConfirmPassword}
           required
         />

@@ -2,7 +2,7 @@ import React from "react";
 import { useContext } from "react";
 import SignupContext from "../../context/SignupContext";
 
-const Step2 = ({ onNext }) => {
+const Step2 = () => {
   const { person, setPerson } = useContext(SignupContext);
 
   // const requiredFields2 = ["licensingBoard", "licenseNumber"];
@@ -15,9 +15,15 @@ const Step2 = ({ onNext }) => {
     setPerson({ ...person, licenseNumber: e.target.value });
   };
 
-  // const handleWorkNum = (e) => {
-  //   setPerson({ ...person, workNumber: e.target.value });
-  // };
+  const handleWorkNum = (e) => {
+    setPerson({ ...person, workNumber: e.target.value });
+  };
+  const handleTelNum = (e) => {
+    setPerson({ ...person, telephoneNumber: e.target.value });
+  };
+  const handleTerms = (e) => {
+    setPerson({ ...person, termsAgreement: true });
+  };
 
   return (
     <section>
@@ -47,17 +53,29 @@ const Step2 = ({ onNext }) => {
           <input
             type="tel"
             placeholder="eg. 05*******0"
-            name="personal tel"
             autoComplete="telephone"
+            name={person.telephoneNumber}
+            onChange={handleTelNum}
           />
         </div>
         <div>
           <label>Work Telephone Number</label>
-          <input type="tel" placeholder="eg. 05*******0" name="work tel" />
+          <input
+            type="tel"
+            placeholder="eg. 05*******0"
+            name={person.workNumber}
+            onChange={handleWorkNum}
+          />
         </div>
       </section>
       <div className="privacy-checkbox">
-        <input type="checkbox" className="checkbox" name="checkbox" required />
+        <input
+          type="checkbox"
+          className="checkbox"
+          name="termsAgreement"
+          onChange={handleTerms}
+          required
+        />
         <span>I agree to MHP's friendly privacy policy.</span>
       </div>
     </section>

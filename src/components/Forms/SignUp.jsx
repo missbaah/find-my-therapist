@@ -10,8 +10,11 @@ const SignUp = ({ showSignUp }) => {
     email: "",
     password: "",
     passwordConfirm: "",
+    telephoneNumber: "",
+    workNumber: "",
     licensingBoard: "",
     licenseNumber: "",
+    termsAgreement: false,
   });
   const [stepNum, setStepNum] = useState(1);
 
@@ -25,7 +28,13 @@ const SignUp = ({ showSignUp }) => {
       "password",
       "passwordConfirm",
     ];
-    const requiredFields2 = ["licensingBoard", "licenseNumber", "checkbox"];
+    const requiredFields2 = [
+      "telephoneNumber",
+      "workNumber",
+      "licensingBoard",
+      "licenseNumber",
+      "termsAgreement",
+    ];
     if (stepNum == 1) {
       requiredFields = [...requiredFields1];
     } else if (stepNum == 2) {
@@ -59,22 +68,22 @@ const SignUp = ({ showSignUp }) => {
 
   function handleSubmit() {
     // get form data and submit it to server
-    // fetch("https://find-therapist-api.onrender.com/auth/signup", {
-    //   method: "POST",
-    //   body: JSON.stringify(person),
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    // })
-    //   .then((response) => response.json())
-    //   .then((data) => {
-    //     console.log("API response:", data);
-    //   })
-    //   .catch((error) => {
-    //     console.error("API error:", error);
-    //   });
+    fetch("https://find-therapist-api.onrender.com/auth/signup", {
+      method: "POST",
+      body: JSON.stringify(person),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("API response:", data);
+      })
+      .catch((error) => {
+        console.error("API error:", error);
+      });
 
-    // console.log(JSON.stringify(person));
+    console.log(JSON.stringify(person));
 
     // redirect to profile page
     window.location.href = "/profilesetup";
