@@ -9,9 +9,14 @@ import {
   LocationOnOutlined,
 } from "@mui/icons-material";
 
+const handleRedirect = () => {
+  console.log("clicked");
+  window.location.href = "/search/therapistName";
+};
+
 const SearchCard = () => {
   return (
-    <section className="search-card">
+    <section className="search-card" onClick={handleRedirect}>
       <section className="card-title">
         <div className="name-photo">
           <img src="" alt="" />

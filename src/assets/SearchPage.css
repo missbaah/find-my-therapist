@@ -60,7 +60,7 @@
 .search-body {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
 }
 
 .search-flex {
@@ -292,4 +292,22 @@ p {
 .card-yrs {
   font-weight: 700;
   font-size: 16px;
+}
+
+/* --------------------------------- */
+/* Profile View Styles */
+.review-contact-btns {
+  display: flex;
+  gap: 16px;
+}
+
+.review-btn {
+  border: 1px solid #3d7d57;
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 18px;
+  color: #3d7d57;
+  background: none;
+  width: 133px;
 }

@@ -8,6 +8,7 @@ import {
   ProfileSetup,
   ProfileDashBoard,
   SearchPage,
+  ProfileView,
 } from "./pages";
 import { AboutSection, Reviews } from "./components";
 import { Route, Routes } from "react-router-dom";
@@ -23,7 +24,11 @@ function App() {
           <Route path="aboutsection" element={<AboutSection />} />
           <Route path="reviews" element={<Reviews />} />
         </Route>
-        <Route path="/search" element={<SearchPage />} />
+        <Route path="/search" element={<SearchPage />}></Route>
+        <Route path="/search/therapistName" element={<ProfileView />}>
+          <Route path="aboutsection" element={<AboutSection />} />
+          <Route path="reviews" element={<Reviews />} />
+        </Route>
         <Route path="/about" element={<About />} />
         <Route path="/professionals" element={<Professionals />} />
         <Route path="/blog" element={<Blog />} />
