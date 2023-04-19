@@ -18,6 +18,11 @@ const SignUp = ({ showSignUp }) => {
   });
   const [stepNum, setStepNum] = useState(1);
 
+  // const handleNext = (e) => {
+  //   e.preventDefault();
+  //   setStepNum(stepNum + 1);
+  // };
+
   const handleNext = (e) => {
     e.preventDefault();
     let requiredFields = [];
@@ -43,7 +48,7 @@ const SignUp = ({ showSignUp }) => {
 
     const isFilled = requiredFields.every((field) => person[field] !== "");
 
-    if (isFilled) {
+    if (isFilled && stepNum < 3) {
       setStepNum(stepNum + 1);
     } else {
       alert("Please fill in all required fields.");
@@ -66,7 +71,8 @@ const SignUp = ({ showSignUp }) => {
     return;
   };
 
-  function handleSubmit() {
+  function handleSubmit(e) {
+    e.preventDefault();
     // get form data and submit it to server
     fetch("https://find-therapist-api.onrender.com/auth/signup", {
       method: "POST",
@@ -82,9 +88,7 @@ const SignUp = ({ showSignUp }) => {
       .catch((error) => {
         console.error("API error:", error);
       });
-
     console.log(JSON.stringify(person));
-
     // redirect to profile page
     window.location.href = "/profilesetup";
   }
