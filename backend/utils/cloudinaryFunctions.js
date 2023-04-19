@@ -28,7 +28,7 @@ async function uploadToCloudinary(filePath){
         })
         .catch(async (error) => {
             await unlink(filePath);
-            throw new appError(`error uploading picture ${error}`, 500)
+            throw new appError(`error uploading picture ${error.message}`, 500)
             
             // console.log(error.message)
         });

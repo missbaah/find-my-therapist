@@ -13,6 +13,7 @@ const userSchema = new Schema({
     workNumber: { type: String},
     licensingBoard: { type: String, required: true },
     licenseNumber: { type: String, required: true, unique: true },
+    termsAgreement: { type: Boolean, required: true, default: true },
     passwordToken: { type: String },
     passwordResetExpires: { type: Date },
     isDeleted: { type: Boolean, defaultValue: false},

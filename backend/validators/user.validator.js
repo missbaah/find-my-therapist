@@ -21,6 +21,7 @@ const userValidator = Joi.object({
                 .required(),
     licenseNumber: Joi.string()
                 .required(),
+    termsAgreement: Joi.boolean().valid(true).required(),
     passwordResetToken: [Joi.string(), Joi.number()],
     passwordResetExpires: Joi.date(),
     telephoneNumber: Joi.string().pattern(/^((\+|00)233|0)?\d{9}$/).required(),

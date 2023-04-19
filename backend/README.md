@@ -54,7 +54,8 @@
     "telephoneNumber": "0573003000",
     "workNumber": "0244405040",
     "licensingBoard": "Ghana Psychology Board",
-    "licenseNumber": "GhaPSYRO1423"
+    "licenseNumber": "GhaPSYRO1423",
+    "termsAgreement": true
     }
 ```
 - Responses
@@ -72,6 +73,7 @@
             "workNumber": "0244405040",
             "licensingBoard": "Ghana Psychology Board",
             "licenseNumber": "GhaPSYRO1423",
+            "termsAgreement": true,
             "name": "Yaa Asantewa",
             "id": "643d30442ae674757f9be7b7"
         },
@@ -186,40 +188,61 @@
 
     | KEY  |  VALUE |
     |---|---|
-    | bio | my bio |
-    | gender | male |
-    | workAddress | GA-350-5912 |
-    | region | Greater Accra |
-    | town | Madina |
-    | profile_pic | img.jpg |
+    |  bio | too big for an about |  
+    |  profilePic | img2.jpg |
+    |  gender|  female | 
+    |  workAddress |   |
+    |  experience |   |
+    |  specialties | CBT |
+    |  interestGroup | Women  |
+    |  officeHourStart | 9:00  |
+    |  officeHoursClose | 4:00 |
+    |  region | Greater Accra |
+    |  town |  Madina |
+    |  website | www.adwoasmart.com  |  
+    |  facebook | www.facebook.com/AdwoaSmart  | 
+    |  instagram | www.instagram.com/AdwoaSmart | 
+    |  twitter |  www.twitter.com/AdwoaSmart |
+    |  linkedin | www.linkedin.com/AdwoaSmart | 
 - Response: 
     ```
     {
-        "status": "success",
-        "message": "profile successfully created",
-        "data": {
-            "bio": "my bio",
-            "profilePic": "https://res.cloudinary.com/doxxo2k1j/image/upload/v1679430997/therapist-profile-pics/bu9ycpoyaswje6zqhucj.jpg",
-            "gender": "male",
-            "workAddress": "GA-350-9898",
-            "specialties": [],
-            "interestGroup": [],
-            "region": "Western Region",
-            "town": "Fijai",
-            "user": {
-                "firstName": "Jaja",
-                "lastName": "Doe",
-                "email": "jaja@mail.com",
-                "licensingBoard": "Ghana INs",
-                "licenseNumber": "GhaPSYRO51423",
-                "id": "641a122314341db16556871f"
-            },
-            "_id": "641a155614341db165568727",
-            "createdAt": "2023-03-21T20:36:38.256Z",
-            "updatedAt": "2023-03-21T20:36:38.256Z",
-            "__v": 0
-        }
+    "status": "success",
+    "message": "profile successfully created",
+    "data": {
+        "bio": "too big for a bio",
+        "profilePic": "https://st3.depositphotos.com/1767687/16607/v/450/depositphotos_166074422-stock-illustration-default-avatar-profile-icon-grey.jpg",
+        "gender": "female",
+        "workAddress": "BA-350-8987",
+        "experience": 1,
+        "specialties": "CBT",
+        "interestGroup": "Women",
+        "region": "Greater Accra",
+        "town": "Madina",
+        "website": "www.adwoasmart.com",
+        "facebook": "www.facebook.com/Adwoa Smart\n",
+        "instagram": "www.instagram.com/AdwoaSmart",
+        "tiktok": "",
+        "linkedin": "www.linkedin.com/AdwoaSmart",
+        "twitter": "www.twitter.com/maame",
+        "user": {
+            "firstName": "Adwoa",
+            "lastName": "Smart",
+            "email": "adwoasmart@mail.com",
+            "telephoneNumber": "0573003000",
+            "workNumber": "0244405040",
+            "licensingBoard": "Ghana Psychology Board",
+            "licenseNumber": "GhaP1234",
+            "termsAgreement": true,
+            "name": "Adwoa Smart",
+            "id": "643fbee715bfcf91790189ff"
+        },
+        "_id": "643fc0c415bfcf9179018a07",
+        "createdAt": "2023-04-19T10:21:56.383Z",
+        "updatedAt": "2023-04-19T10:21:56.383Z",
+        "__v": 0
     }
+}
     ```
 ---
 

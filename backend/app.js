@@ -40,9 +40,6 @@ app.get('/', (req,res) => {
     res.send("welcome to the findmytherapist app \n <a href='/auth/google' data-prompt='select_account'>Continue with Google</a>") 
 })
 
-app.get("/debug-sentry", function mainHandler(req, res) {
-    throw new appError("My first Sentry error!");
-});
 
 // change req time format
 app.use((req,res,next) => {
@@ -55,6 +52,9 @@ app.all('*', (req,res,next) =>{
     return new appError(`${req.originalUrl} not found on server`, 404)
 })
 
+// register global error handler
+app.use(globalErrorHandler)
+
 app.use(Sentry.Handlers.errorHandler())
 
 app.use(function onError(err, req, res, next) {
@@ -64,9 +64,6 @@ app.use(function onError(err, req, res, next) {
     res.end(res.sentry + "\n");
     console.log(err)
 });
-
-// register global error handler
-app.use(globalErrorHandler)
 
 
 module.exports = app 

@@ -41,7 +41,7 @@ const createSendToken = (user,statusCode, res) => {
 exports.signup = async (req,res) => {
 
     // GET USER INPUT FROM REQ.BODY
-    const { firstName, lastName, email, password, passwordConfirm, telephoneNumber, workNumber, licensingBoard, licenseNumber } = req.body
+    const { firstName, lastName, email, password, passwordConfirm, telephoneNumber, workNumber, licensingBoard, licenseNumber, termsAgreement } = req.body
     // ENSURE ALL FIELDS ARE COMPLETED
     if(!(firstName && lastName && email && password && passwordConfirm && licensingBoard && licenseNumber && telephoneNumber && workNumber)){
         return res.status(400).json({message: 'All fields must be filled'})
@@ -50,6 +50,12 @@ exports.signup = async (req,res) => {
     // COMPARE PASSWORD and PASSWORD CONFIRM
     if(passwordConfirm !== password){
         return res.status(400).json({message: 'Passwords must match'})
+    }
+
+    if(!termsAgreement){
+        return res.status(400).json({
+            message: `Please agree to the terms of service`
+        })
     }
 
     // CHECK VALIDITY OF LICENSING DETAILS
