@@ -20,18 +20,18 @@ const NavBar = () => {
         LOGO
       </Link>
       <section className="link2">
-        <Link className="item" to="/about">
+        <a className="item" href="#about">
           About us
-        </Link>
-        <Link className="item" to="/professionals">
+        </a>
+        <a className="item" href="#professionals">
           Professionals
-        </Link>
-        <Link className="item" to="/blog">
+        </a>
+        <a className="item" href="#blogspace">
           Blog
-        </Link>
-        <Link className="item" to="/faqs">
+        </a>
+        <a className="item" href="#faqs">
           FAQs
-        </Link>
+        </a>
       </section>
       <section className="link-btns ">
         <button className="link3" onClick={handleSignUp}>

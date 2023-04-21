@@ -49,7 +49,7 @@ const BlogSpace = () => {
   });
 
   return (
-    <section className="blogspace">
+    <section className="blogspace" id="blogspace">
       <section className="blog-stories">
         <section className="heading">
           <h2>Latest Blog</h2>

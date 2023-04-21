@@ -20,7 +20,7 @@ const FAQs = () => {
   };
 
   return (
-    <section className="qtns-container">
+    <section className="qtns-container" id="faqs">
       <section className="qtns-title">
         <h2>Frequently asked Questions</h2>
         <p>We answered questions so you don't have to ask them. </p>

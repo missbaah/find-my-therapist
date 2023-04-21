@@ -1,10 +1,6 @@
 import "./App.css";
 import {
   Home,
-  About,
-  Professionals,
-  FAQs,
-  Blog,
   ProfileSetup,
   ProfileDashBoard,
   SearchPage,
@@ -29,10 +25,6 @@ function App() {
           <Route path="aboutsection" element={<AboutSection />} />
           <Route path="addreview" element={<AddReview />} />
         </Route>
-        <Route path="/about" element={<About />} />
-        <Route path="/professionals" element={<Professionals />} />
-        <Route path="/blog" element={<Blog />} />
-        <Route path="/faqs" element={<FAQs />} />
       </Routes>
     </div>
   );

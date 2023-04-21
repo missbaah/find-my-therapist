@@ -3,7 +3,7 @@ import { DisplayCard } from "../components";
 
 const Professionals = () => {
   return (
-    <section className="container">
+    <section className="container" id="professionals">
       <section className="prof-container">
         <div className="top-section">
           <h1>Discover Ghana's best MHPs</h1>
