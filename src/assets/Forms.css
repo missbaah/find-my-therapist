@@ -232,8 +232,10 @@
 
 /* ---------------------- */
 /* Error Message */
-
 .err-message {
+  display: none;
+}
+.err-active {
   width: 474px;
   padding: 17px 24px 17px 24px;
   height: auto;

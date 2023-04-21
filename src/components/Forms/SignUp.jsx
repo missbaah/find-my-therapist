@@ -18,11 +18,7 @@ const SignUp = ({ showSignUp }) => {
     termsAgreement: false,
   });
   const [stepNum, setStepNum] = useState(1);
-
-  // const handleNext = (e) => {
-  //   e.preventDefault();
-  //   setStepNum(stepNum + 1);
-  // };
+  const [error, setError] = useState(false);
 
   const handleNext = (e) => {
     e.preventDefault();
@@ -49,10 +45,11 @@ const SignUp = ({ showSignUp }) => {
 
     const isFilled = requiredFields.every((field) => person[field] !== "");
 
-    if (isFilled && stepNum < 3) {
+    if (isFilled && stepNum < 2) {
       setStepNum(stepNum + 1);
+      setError(!error);
     } else {
-      alert("Please fill in all required fields.");
+      setError(!error);
     }
   };
 
@@ -85,14 +82,22 @@ const SignUp = ({ showSignUp }) => {
       .then((response) => response.json())
       .then((data) => {
         console.log("API response:", data);
+        if ((data.status = "success")) {
+          setStepNum(stepNum + 1);
+        } else if ((data.status = "failed")) {
+          setStepNum(stepNum + 2);
+        }
       })
       .catch((error) => {
         console.error("API error:", error);
       });
     console.log(JSON.stringify(person));
-    // redirect to profile page
-    window.location.href = "/profilesetup";
   }
+
+  const handleSetupRedirect = (e) => {
+    e.preventDefault();
+    window.location.href = "/profilesetup";
+  };
 
   return (
     <main className={`${showSignUp ? "active" : ""} blanket one`}>
@@ -119,7 +124,7 @@ const SignUp = ({ showSignUp }) => {
               ></div>
             </div>
           </div>
-          <div className="err-message">
+          <div className={`${error ? "err-active" : ""} err-message`}>
             <HighlightOff />
             <p>Please fill in all required fields</p>
           </div>
@@ -142,7 +147,7 @@ const SignUp = ({ showSignUp }) => {
             className="signup-options"
             style={{ display: stepNum == 1 || stepNum == 3 ? "none" : "flex" }}
           >
-            <button className="login" onClick={handleNext}>
+            <button type="submit" className="login" onClick={handleSubmit}>
               Complete sign up
             </button>
             <button onClick={handleBack} className="back-btn">
@@ -154,7 +159,9 @@ const SignUp = ({ showSignUp }) => {
             </button>{" "}
           </section>
           <section style={{ display: stepNum == 3 ? "block" : "none" }}>
-            <button type="submit">Set up Profile</button>
+            <button onClick={handleSetupRedirect} className="login">
+              Set up Profile
+            </button>
           </section>
         </form>
       </SignupContext.Provider>
