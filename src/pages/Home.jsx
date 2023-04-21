@@ -7,6 +7,7 @@ const Home = () => {
       <NavBar />
       <Hero />
       <About />
+
       <Professionals />
       <CrisisBanner />
       <BlogSpace />

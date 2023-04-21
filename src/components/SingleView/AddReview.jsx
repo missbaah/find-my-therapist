@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import SingleReview from "../ProfileDashboard/SingleReview.jsx";
-import "../../assets/ProfileDashboard.css";
 
 const AddReview = () => {
   const [active, setActive] = useState(true);

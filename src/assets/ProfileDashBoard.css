@@ -21,10 +21,8 @@
   align-items: flex-start;
   padding: 100px 150px;
   gap: 12px;
-  /* width: 80vw; */
-  position: absolute;
-  left: 0px;
-  top: 88px;
+  align-self: center;
+  margin-top: -290px;
 }
 
 .dashboard-body h3 {
@@ -52,16 +50,15 @@
   color: #8a8a8a;
 }
 
-.dashboard-body {
+/* .dashboard-body {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   padding: 100px 150px;
   gap: 12px;
-  position: absolute;
+  /* position: absolute;
   left: 0px;
-  top: 88px;
-}
+  top: 88px; */
 
 .person-info {
   display: flex;

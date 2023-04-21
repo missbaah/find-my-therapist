@@ -311,3 +311,8 @@ p {
   background: none;
   width: 133px;
 }
+
+.profileview {
+  display: flex;
+  flex-direction: column;
+}

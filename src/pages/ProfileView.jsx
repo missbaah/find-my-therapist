@@ -6,11 +6,12 @@ import { Link, Outlet } from "react-router-dom";
 
 const ProfileView = () => {
   return (
-    <main>
+    <main className="profileview">
       <NavBarDark />
       <div className="coverpic">
         <img src={coverpic} id="coverpic" alt="coverpic" />
       </div>
+
       <section className="dashboard-section">
         <section className="person-info">
           <div className="sub-1">
