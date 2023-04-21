@@ -23,10 +23,7 @@ const ProfileView = () => {
               </div>
             </div>
           </div>
-          <div className="review-contact-btns">
-            <button className="review-btn">Leave a Review</button>
-            <button className="edit-btn">Call now</button>
-          </div>
+          <button className="edit-btn">Call now</button>
         </section>
         <div className="person-bio">
           <Link
@@ -37,7 +34,7 @@ const ProfileView = () => {
             About
           </Link>
           <Link
-            to="reviews"
+            to="addreview"
             // onClick={handleClick}
             // className={style ? "active-link" : ""}
           >

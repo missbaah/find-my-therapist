@@ -20,3 +20,4 @@ export { default as Reviews } from "./ProfileDashboard/Reviews.jsx";
 export { default as NavBarDark } from "./SearchPage/NavBarDark.jsx";
 export { default as SearchBarDark } from "./SearchPage/SearchBarDark.jsx";
 export { default as SearchCard } from "./SearchPage/SearchCard.jsx";
+export { default as AddReview } from "./SingleView/AddReview.jsx";

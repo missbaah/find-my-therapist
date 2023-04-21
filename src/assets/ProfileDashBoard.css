@@ -367,3 +367,56 @@
   font-size: 14px;
   border-radius: 10px;
 }
+
+/* --------------------------------- */
+/* AddReview Styles */
+
+.review-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+
+.review-form p {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 32px;
+}
+
+.review-form input,
+textarea {
+  width: 1028px;
+  background: #f8f8f8;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  padding: 12px 0px 12px 20px;
+}
+
+.review-form input::placeholder,
+textarea::placeholder {
+  font-family: "Euclid Circular A";
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.review-form input {
+  height: 50px;
+}
+
+.review-form textarea {
+  height: 152px;
+}
+
+.review-form button {
+  width: 78px;
+  height: 46px;
+  background: #3d7d57;
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 18px;
+  color: #ffffff;
+  align-self: flex-end;
+}

@@ -10,7 +10,7 @@ import {
   SearchPage,
   ProfileView,
 } from "./pages";
-import { AboutSection, Reviews } from "./components";
+import { AboutSection, Reviews, AddReview } from "./components";
 import { Route, Routes } from "react-router-dom";
 
 function App() {
@@ -27,7 +27,7 @@ function App() {
         <Route path="/search" element={<SearchPage />}></Route>
         <Route path="/search/therapistName" element={<ProfileView />}>
           <Route path="aboutsection" element={<AboutSection />} />
-          <Route path="reviews" element={<Reviews />} />
+          <Route path="addreview" element={<AddReview />} />
         </Route>
         <Route path="/about" element={<About />} />
         <Route path="/professionals" element={<Professionals />} />
