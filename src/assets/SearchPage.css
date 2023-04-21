@@ -111,11 +111,11 @@
   margin-bottom: 48px;
 }
 
-#search {
-  position: relative;
-  top: 6px;
-  left: 9px;
-}
+/* #search {
+  position: absolute;
+  top: 237px;
+  left: 92px;
+} */
 
 .search-form input {
   border: none;

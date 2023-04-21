@@ -1,5 +1,5 @@
 import React from "react";
-import searchicon from "../../images/search.png";
+import { SearchRounded } from "@mui/icons-material";
 import line from "../../images/Line 1.png";
 import { regions } from "../../data/regions";
 import { useState } from "react";
@@ -34,8 +34,8 @@ const SearchBarDark = () => {
   return (
     <section>
       <form className="search-form">
+        <SearchRounded fontSize="large" id="search" />
         <label className="item1">
-          <img src={searchicon} alt="search-icon" id="search" />
           <input type="text" placeholder="Search by name or specialty" />
         </label>
         <img src={line} alt="line" />

@@ -3,6 +3,7 @@ import searchicon from "../../images/search.png";
 import line from "../../images/Line 1.png";
 import { regions } from "../../data/regions";
 import { useState } from "react";
+import { SearchRounded } from "@mui/icons-material";
 
 const SearchBar = () => {
   const ListOfRegions = regions.map((region) => {
@@ -34,8 +35,8 @@ const SearchBar = () => {
   return (
     <section>
       <form className="form">
+        <SearchRounded fontSize="large" id="search" />
         <label className="item1">
-          <img src={searchicon} alt="search-icon" id="search" />
           <input type="text" placeholder="Search by name or specialty" />
         </label>
         <img src={line} alt="line" />

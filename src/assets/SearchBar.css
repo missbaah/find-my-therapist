@@ -11,9 +11,7 @@
 }
 
 #search {
-  position: relative;
-  top: 6px;
-  left: 9px;
+  margin-right: -25px;
 }
 
 .form input {
