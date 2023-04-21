@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Step1, Step2, Successful, Login } from "..";
 import SignupContext from "../../context/SignupContext";
 import "../../assets/Forms.css";
+import { HighlightOff } from "@mui/icons-material";
 
 const SignUp = ({ showSignUp }) => {
   const [person, setPerson] = useState({
@@ -117,6 +118,10 @@ const SignUp = ({ showSignUp }) => {
                 style={{ background: stepNum == 1 ? "#D9D9D9" : "#3d7d57" }}
               ></div>
             </div>
+          </div>
+          <div className="err-message">
+            <HighlightOff />
+            <p>Please fill in all required fields</p>
           </div>
           <section className="Body">{FormBody()}</section>
           <section
