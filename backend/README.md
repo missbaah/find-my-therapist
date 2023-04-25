@@ -27,11 +27,11 @@
 |  lastName     | string  | required | 
 |  email | string  |  required, unique|
 |  password |   string |  required  |
-|  confirm_password |   string |  required  |
+|  confirmPassword |   string |  required  |
 |  telephoneNumber  |  string |  required |
 |  workNumber  |  string |  required |
 |  licensingBoard  |  string |  required |
-|  licenseNumbber  |  string |  required |
+|  licenseNumber  |  string |  required |
 
 ---
 ### Social authentication
@@ -46,16 +46,16 @@
 - Body: 
 ```
     {
-    "firstName": "Yaa",
-    "lastName": "Asantewa",
-    "email": "yasantewa@mail.com",
-    "password": "12345678",
-    "passwordConfirm": "12345678",
-    "telephoneNumber": "0573003000",
-    "workNumber": "0244405040",
-    "licensingBoard": "Ghana Psychology Board",
-    "licenseNumber": "GhaPSYRO1423",
-    "termsAgreement": true
+        "firstName": "Yaa",
+        "lastName": "Asantewa",
+        "email": "yasantewa@mail.com",
+        "password": "12345678",
+        "passwordConfirm": "12345678",
+        "telephoneNumber": "0573003000",
+        "workNumber": "0244405040",
+        "licensingBoard": "Ghana Psychology Board",
+        "licenseNumber": "GhaPSYRO1423",
+        "termsAgreement": true
     }
 ```
 - Responses
@@ -113,7 +113,66 @@
         }
     }
     ```
----    
+
+### Get MHP by name
+- Route: auth/user
+- Method: GET
+- Query Params: 
+    - name
+- Responses
+    -success
+    ```
+        {
+            "status": "success",
+            "data": {
+                "termsAgreement": true,
+                "firstName": "Kwame",
+                "lastName": "Atobam",
+                "email": "katobam@mail.com",
+                "licensingBoard": "Ghana INs",
+                "licenseNumber": "Gha-uioy",
+                "name": "Kwame Atobam",
+                "id": "63fc9b0b31f5fe4b81379bef"
+            }
+        }
+    ```
+    -fail
+    ```
+        {
+            "status": "fail",
+            "message": "user not found"
+        }
+    ```
+---
+
+### Get MHP by userId
+- Route: auth/user/{userId}
+- Method: GET
+- Responses
+    -success
+    ```
+        {
+            "status": "success",
+            "data": {
+                "termsAgreement": true,
+                "firstName": "Kwame",
+                "lastName": "Atobam",
+                "email": "katobam@mail.com",
+                "licensingBoard": "Ghana INs",
+                "licenseNumber": "Gha-uioy",
+                "name": "Kwame Atobam",
+                "id": "63fc9b0b31f5fe4b81379bef"
+            }
+        }
+    ```
+    -fail
+    ```
+        {
+            "status": "fail",
+            "message": "user not found"
+        }
+    ```
+---
 
 ### Forgot-password
 - Route: auth/forgot-password
@@ -352,7 +411,7 @@
 
 - Response
     ```
-        {
+    {
     "status": "success",
     "page": 1,
     "result": 1,
@@ -384,7 +443,7 @@
                 "facebook": "www.facebook.com/jfkn"
             }
         ]
-        }
+    }
     ```
 
 ### Thank you!

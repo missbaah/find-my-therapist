@@ -260,19 +260,42 @@ exports.resetPassword = async(req, res) => {
     };
 };
 
-// exports.getUser = async (req, res) => {
-//     const { name } = req.query;
+exports.getUserByName = async (req, res) => {
+    const { name } = req.query;
     
-//     const splitName = name.split(' ')
-//     const firstName = splitName[0];
-//     const lastName = splitName[1];
+    const splitName = name.split(' ')
+    const firstName = splitName[0];
+    const lastName = splitName[1];
 
-//     const user = await User.findOne({firstName: firstName, lastName: lastName})
+    const user = await User.findOne({firstName: firstName, lastName: lastName})
     
-//     if(user){
-//        res.json(user) 
-//     }else{
-//         res.status(404).json({message: 'user not found'})
-//     }
+    if(user){
+       res.status(200).json({
+            status: 'success',
+            data: user
+       }) 
+    }else{
+        res.status(404).json({
+            status: 'fail',
+            message: 'user not found'
+        })
+    }
+}
 
-// }
+exports.getUserById = async (req, res) => {
+    const { userId } = req.params;
+    
+    const user = await User.findById(userId)
+    
+    if(!user){
+       res.status(404).json({
+            status: 'fail',
+            message: 'user not found'
+        })
+    }else{
+        res.status(200).json({
+            status: 'success',
+            data: user
+        })
+    }
+}
