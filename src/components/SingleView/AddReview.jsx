@@ -7,7 +7,9 @@ const AddReview = () => {
   return (
     <section className="reviews">
       <form className="review-form">
-        <p>Leave a review ❤️</p>
+        <p>
+          Leave a review <span>&#128150;</span>
+        </p>
         <label>
           <input placeholder="Please enter your full name" />
         </label>
