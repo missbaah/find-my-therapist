@@ -1,10 +1,24 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import "../assets/ProfileSetup.css";
 import { Setup1, Setup2, Setup3, Setup4, Setup5 } from "../components";
 
 const ProfileSetup = () => {
   const [num, setNum] = useState(0);
+  const [user, setUser] = useState([]);
+  const { profilesetup } = useParams();
+
+  fetch(`https://find-therapist-api.onrender.com/auth/user/${profilesetup}`, {
+    method: "GET",
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log("API response:", data);
+      setUser([...user, data]);
+    })
+    .catch((error) => {
+      console.error("API error:", error);
+    });
 
   function handleSubmit(e) {
     e.preventDefault();

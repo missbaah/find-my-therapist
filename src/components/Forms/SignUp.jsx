@@ -19,6 +19,7 @@ const SignUp = ({ showSignUp }) => {
   });
   const [stepNum, setStepNum] = useState(1);
   const [error, setError] = useState(false);
+  const [user, setUser] = useState([]);
 
   const handleNext = (e) => {
     e.preventDefault();
@@ -82,8 +83,10 @@ const SignUp = ({ showSignUp }) => {
       .then((response) => response.json())
       .then((data) => {
         console.log("API response:", data);
+        setUser([...user, data]);
         if ((data.status = "success")) {
           setStepNum(stepNum + 1);
+          console.log(data.data.user.id);
         } else if ((data.status = "failed")) {
           setStepNum(stepNum + 2);
         }
@@ -94,9 +97,13 @@ const SignUp = ({ showSignUp }) => {
     console.log(JSON.stringify(person));
   }
 
-  const handleSetupRedirect = (e) => {
-    e.preventDefault();
-    window.location.href = "/profilesetup";
+  // const id = user[0].data.user.id;
+
+  // console.log(user[0].data.user.id); // id of user
+
+  const handleSetupRedirect = () => {
+    // e.preventDefault();
+    window.location.href = `/${user[0].data.user.id}`;
   };
 
   return (
