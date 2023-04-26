@@ -8,6 +8,24 @@ const ProfileSetup = () => {
   const [user, setUser] = useState([]);
   const { profilesetup } = useParams();
   const [loading, setLoading] = useState(true);
+  const [profile, setProfile] = useState({
+    bio: "",
+    profilePic: "",
+    gender: "",
+    workAddress: "",
+    experience: "",
+    specialties: "",
+    interestGroup: "",
+    officeHourStart: "",
+    officeHoursClose: "",
+    region: "",
+    town: "",
+    website: "",
+    facebook: "",
+    instagram: "",
+    tiktok: "",
+    snapchat: "",
+  });
 
   useEffect(() => {
     fetch(`https://find-therapist-api.onrender.com/auth/user/${profilesetup}`, {
@@ -24,12 +42,25 @@ const ProfileSetup = () => {
       });
   }, []);
 
-  // console.log(user[0].data.firstName + " " + user[0].data.lastName);
+  useEffect(() => {
+    fetch("https://find-therapist-api.onrender.com//api/v1/profile", {
+      method: "POST",
+      body: JSON.stringify(person),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("API response:", data);
+      })
+      .catch((error) => {
+        console.error("API error:", error);
+      });
+  }, []);
 
   function handleSubmit(e) {
     e.preventDefault();
-    // get form data and submit it to server
-    // redirect to profile page
     window.location.href = "/profiledashboard";
   }
 
@@ -82,9 +113,7 @@ const ProfileSetup = () => {
             </Link>
             <div>
               <img src="" alt="" />
-              <p className="name">
-                {user[0].data.firstName + " " + user[0].data.lastName}
-              </p>
+              <p className="name">{user[0].data.name}</p>
             </div>
           </nav>
           <section className="profile-body">
