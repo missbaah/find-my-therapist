@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import "../assets/ProfileSetup.css";
+import ProfileSetupContext from "../context/ProfileSetupContext";
 import { Setup1, Setup2, Setup3, Setup4, Setup5 } from "../components";
 
 const ProfileSetup = () => {
@@ -107,86 +108,89 @@ const ProfileSetup = () => {
         <h1>Loading</h1>
       ) : (
         <>
-          <nav className="profile-nav">
-            <Link className="profile-logo" to="/">
-              LOGO
-            </Link>
-            <div>
-              <img src="" alt="" />
-              <p className="name">{user[0].data.name}</p>
-            </div>
-          </nav>
-          <section className="profile-body">
-            <form className="setup-card" onSubmit={handleSubmit}>
-              <div
-                className="heading-content"
-                style={{ display: num == 4 ? "none" : "block" }}
-              >
-                <p className="step">Step {num + 1}</p>
-                <div className="progress">
-                  <div
-                    className="setup-progress"
-                    style={{ background: num == 0 ? "#3d7d57" : "#3d7d57" }}
-                  ></div>
-                  <div
-                    className="setup-progress"
-                    style={{
-                      background: num == 0 ? "#D9D9D9" : "#3d7d57",
-                    }}
-                  ></div>
-                  <div
-                    className="setup-progress"
-                    style={{
-                      background: num == 0 || num == 1 ? "#D9D9D9" : "#3d7d57",
-                    }}
-                  ></div>
-                  <div
-                    className="setup-progress"
-                    style={{
-                      background:
-                        num == 0 || num == 1 || num == 2
-                          ? "#D9D9D9"
-                          : "#3d7d57",
-                    }}
-                  ></div>
-                </div>
-                <h3>{SetupTitle[num]}</h3>
+          <ProfileSetupContext.Provider value={{ profile, setProfile }}>
+            <nav className="profile-nav">
+              <Link className="profile-logo" to="/">
+                LOGO
+              </Link>
+              <div>
+                <img src="" alt="" />
+                <p className="name">{user[0].data.name}</p>
               </div>
-              <section className="body">
-                {SetupBody()}
-                <div style={{ display: num == 4 ? "none" : "block" }}>
+            </nav>
+            <section className="profile-body">
+              <form className="setup-card" onSubmit={handleSubmit}>
+                <div
+                  className="heading-content"
+                  style={{ display: num == 4 ? "none" : "block" }}
+                >
+                  <p className="step">Step {num + 1}</p>
+                  <div className="progress">
+                    <div
+                      className="setup-progress"
+                      style={{ background: num == 0 ? "#3d7d57" : "#3d7d57" }}
+                    ></div>
+                    <div
+                      className="setup-progress"
+                      style={{
+                        background: num == 0 ? "#D9D9D9" : "#3d7d57",
+                      }}
+                    ></div>
+                    <div
+                      className="setup-progress"
+                      style={{
+                        background:
+                          num == 0 || num == 1 ? "#D9D9D9" : "#3d7d57",
+                      }}
+                    ></div>
+                    <div
+                      className="setup-progress"
+                      style={{
+                        background:
+                          num == 0 || num == 1 || num == 2
+                            ? "#D9D9D9"
+                            : "#3d7d57",
+                      }}
+                    ></div>
+                  </div>
+                  <h3>{SetupTitle[num]}</h3>
+                </div>
+                <section className="body">
+                  {SetupBody()}
+                  <div style={{ display: num == 4 ? "none" : "block" }}>
+                    <button
+                      onClick={handleNext}
+                      disabled={num > 4}
+                      className="login"
+                    >
+                      Next
+                    </button>
+                    <button
+                      style={{ display: num == 0 ? "none" : "block" }}
+                      onClick={handleBack}
+                      disabled={num < 1}
+                      className="back-btn"
+                    >
+                      Back
+                    </button>
+                  </div>
                   <button
-                    onClick={handleNext}
-                    disabled={num > 4}
+                    style={{
+                      display:
+                        num == 0 || num == 1 || num == 2 || num == 3
+                          ? "none"
+                          : "block",
+                    }}
+                    type="submit"
+                    disabled={num < 1}
                     className="login"
                   >
-                    Next
+                    Check out profile
                   </button>
-                  <button
-                    style={{ display: num == 0 ? "none" : "block" }}
-                    onClick={handleBack}
-                    disabled={num < 1}
-                    className="back-btn"
-                  >
-                    Back
-                  </button>
-                </div>
-                <button
-                  style={{
-                    display:
-                      num == 0 || num == 1 || num == 2 || num == 3
-                        ? "none"
-                        : "block",
-                  }}
-                  type="submit"
-                  disabled={num < 1}
-                  className="login"
-                >
-                  Check out profile
-                </button>
-              </section>
-            </form>
-          </section>
+                </section>
+              </form>
+            </section>
+          </ProfileSetupContext.Provider>
         </>
       )}
     </main>
