@@ -96,6 +96,7 @@ exports.getOwnerProfile = async (req, res) => {
 
 
 // GET MHPs Profiles
+
 exports.getMHP = async (req, res) => {
     const { query } = req;
     const { name, specialty, region, town, page = 1, per_page = 10 } = query;
@@ -113,13 +114,27 @@ exports.getMHP = async (req, res) => {
 
     const lookupStage = {
         $lookup: {
-          from: 'users',
-          let: { userId: '$user' },
+          from: "users",
+          let: { userId: "$user" },
           pipeline: [
-            { $match: { $expr: { $eq: ['$_id', '$$userId'] } } },
+            { $match: { $expr: { $eq: ["$_id", "$$userId"] } } },
             { $project: { password: 0 } },
+            {
+              $lookup: {
+                from: "reviews",
+                let: { therapistId: "$_id" },
+                pipeline: [
+                  {
+                    $match: {
+                      $expr: { $eq: ["$therapist", "$$therapistId"] },
+                    },
+                  },
+                ],
+                as: "reviews",
+              },
+            },
           ],
-          as: 'user',
+          as: "user",
         },
     };
   
@@ -144,5 +159,5 @@ exports.getMHP = async (req, res) => {
       result: profiles.length,
       data: profiles,
     });
-  };
+};
   

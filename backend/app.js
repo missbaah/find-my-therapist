@@ -12,6 +12,7 @@ const globalErrorHandler = require('./controllers/error.controller');
 const userRoute = require('./routes/user.route')
 const profileRoute = require('./routes/profile.route')
 const accountRoute = require('./routes/account.route')
+const reviewRoute = require('./routes/review.route')
 
 Sentry.init({dsn: process.env.SENTRY_DSN})
 
@@ -34,6 +35,7 @@ app.use(cookieParser());
 app.use('/auth/', userRoute)
 app.use('/api/v1/profile', profileRoute)
 app.use('/api/v1/account', accountRoute)
+app.use('/api/v1/review', reviewRoute)
 
 // home route
 app.get('/', (req,res) => { 

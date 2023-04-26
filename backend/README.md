@@ -222,15 +222,14 @@
 |  experience | number  |  |
 |  specialties | string  |  |
 |  interestGroup | string  |  |
-|  officeHourStart | date  |  |
-|  officeHoursClose | date  |  |
+|  officeHourStart | string  |  |
+|  officeHoursClose | string  |  |
 |  region | string  | required |
 |  town | string  | required |
 |  website | string  |  |
 |  facebook | string  |  |
 |  instagram | string  |  |
-|  tiktok | string  |  |
-|  snapchat | string  |  |
+|  linkedin | string  |  |
 
 ---
 
@@ -417,33 +416,163 @@
     "result": 1,
     "data": [
         {
-            "_id": "641862648e6c5e7c26c41d71",
-            "bio": "Mama One",
-            "profilePic": "https://res.cloudinary.com/doxxo2k1j/image/upload/v1679319651/therapist-profile-pics/jr62xvgwfqkexp4osxr0.jpg",
-            "gender": "female",
-            "workAddress": "ghana",
-            "specialties": [],
-            "interestGroup": [],
-            "region": "Greater Accra",
-            "town": "madina",
+            "_id": "6449194ce21e8ff84f6591ac",
+            "bio": "an edited profile bio",
+            "profilePic": "https://res.cloudinary.com/doxxo2k1j/image/upload/v1682515761/therapist-profile-pics/gujhnvwwvtuhjqtp18st.jpg",
+            "gender": "male",
+            "workAddress": "Ga-350-9884",
+            "experience": 3,
+            "specialties": "DBT",
+            "region": "Greater Accra ",
+            "town": "Dansoman",
+            "website": "www.mysite.com",
+            "facebook": "www.facebook.com/me",
+            "instagram": "www.instagram.com/me",
+            "twitter": "www.twitter.com/me",
             "user": [
-                    {
-                        "_id": "64184702f66091c92f1250ad",
-                        "firstName": "Nana",
-                        "lastName": "Agradaa",
-                        "email": "nagrada@mail.com",
-                        "licensingBoard": "Ghana INs",
-                        "licenseNumber": "GhaPSYAWO1543",
-                        "__v": 0
-                    }
-                ],
-                "createdAt": "2023-03-20T13:40:52.278Z",
-                "updatedAt": "2023-03-21T15:24:16.507Z",
-                "__v": 0,
-                "facebook": "www.facebook.com/jfkn"
-            }
-        ]
-    }
+                {
+                    "_id": "64491202e21e8ff84f6591a1",
+                    "firstName": "Justice",
+                    "lastName": "Etor",
+                    "email": "jetor@mail.com",
+                    "telephoneNumber": "0244102030",
+                    "workNumber": "0541020302",
+                    "licensingBoard": "Ghana Psychology Council",
+                    "licenseNumber": "GHAPSY098",
+                    "termsAgreement": true,
+                    "__v": 0,
+                    "reviews": [
+                        {
+                            "_id": "64491edde21e8ff84f6591c3",
+                            "reviewer": "Kwame Nkrumah",
+                            "review": "This therapist helped me deal with the aftermath of my overthrow from the seat of government. I was a mess. He helped me come out of the abyss",
+                            "state": "published",
+                            "therapist": "64491202e21e8ff84f6591a1",
+                            "createdAt": "2023-04-26T12:53:49.733Z",
+                            "updatedAt": "2023-04-26T13:14:33.274Z",
+                            "__v": 0
+                        }
+                    ]
+                }
+            ],
+            "createdAt": "2023-04-26T12:30:05.200Z",
+            "updatedAt": "2023-04-26T12:34:35.092Z",
+            "__v": 0
+                }
+            ]
+        }
     ```
+---
+
+## REVIEW
+| field  |  data_type | constraints  |
+|---|---|---|
+|  reviewer   | string  | required | 
+|  review | string  | required |
+---
+### Review Routes
+---
+### Draft a review
+- Route: /api/v1/review/{mhpId}
+- Method: POST
+- Body: 
+    ```
+        {
+            "reviewer": "Kwame Nkrumah",
+            "review": "This therapist helped me deal with the aftermath of my dethronement. I was a mess. He helped me come out of the abyss"
+        }
+    ```
+
+- Response: 
+    ```
+        {
+            "status": "success",
+            "message": "Review added successfully",
+            "data": {
+                "reviewer": "Kwame Nkrumah",
+                "review": "This therapist helped me deal with the aftermath of my dethronement. I was a mess. He helped me come out of the abyss",
+                "state": "draft",
+                "therapist": "64491202e21e8ff84f6591a1",
+                "createdAt": "2023-04-26T12:53:49.733Z",
+                "updatedAt": "2023-04-26T12:53:49.733Z",
+                "id": "64491edde21e8ff84f6591c3"
+            }
+        }
+    ```
+---
+
+### Edit draft review
+- Route: /api/v1/review/{reviewId}
+- Method: PATCH
+- Body: 
+    ```
+        {
+            "body": "This therapist helped me deal with the aftermath of my overthrow from the seat of governement. I was a mess. He helped me come out of the abyss"
+        }
+    ```
+
+- Response(not found): 
+    ```
+        {
+            "status": "fail",
+            "message": "Review not found"
+        }
+ 
+
+
+- Response(in progress): 
+    ```
+        {
+            "status": "in progress",
+            "message": "Your review is awaiting acceptance. You can edit when it is published"
+        }
+    ```
+
+- Response(success): 
+    ```
+        {
+            "status": "success",
+            "message": "Review update successful",
+            "data": {
+                "reviewer": "Kwame Nkrumah",
+                "review": "This therapist helped me deal with the aftermath of my overthrow from the seat of government. I was a mess. He helped me come out of the abyss",
+                "state": "published",
+                "therapist": "64491202e21e8ff84f6591a1",
+                "createdAt": "2023-04-26T12:53:49.733Z",
+                "updatedAt": "2023-04-26T13:14:33.274Z",
+                "id": "64491edde21e8ff84f6591c3"
+            }
+        }
+    ```    
+---
+
+### Publish review
+- Route: /api/v1/review/publish/{reviewId}
+- Method: PATCH
+- Body: 
+    ```
+        {
+            "body": "This therapist helped me deal with the aftermath of my overthrow from the seat of governement. I was a mess. He helped me come out of the abyss"
+        }
+    ```
+
+- Response: 
+    ```
+        {
+            "status": "success",
+            "message": "Review successfully published",
+            "data": {
+                "reviewer": "Kwame Nkrumah",
+                "review": "This therapist helped me deal with the aftermath of my dethronement. I was a mess. He helped me come out of the abyss",
+                "state": "published",
+                "therapist": "64491202e21e8ff84f6591a1",
+                "createdAt": "2023-04-26T12:53:49.733Z",
+                "updatedAt": "2023-04-26T12:53:49.733Z",
+                "id": "64491edde21e8ff84f6591c3"
+            }
+        }
+    ```
+---
+
 
 ### Thank you!
