@@ -46,7 +46,7 @@ const ProfileSetup = () => {
   useEffect(() => {
     fetch("https://find-therapist-api.onrender.com//api/v1/profile", {
       method: "POST",
-      body: JSON.stringify(person),
+      body: JSON.stringify(profile),
       headers: {
         "Content-Type": "application/json",
       },
