@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import "../assets/ProfileSetup.css";
 import { Setup1, Setup2, Setup3, Setup4, Setup5 } from "../components";
@@ -7,18 +7,24 @@ const ProfileSetup = () => {
   const [num, setNum] = useState(0);
   const [user, setUser] = useState([]);
   const { profilesetup } = useParams();
+  const [loading, setLoading] = useState(true);
 
-  fetch(`https://find-therapist-api.onrender.com/auth/user/${profilesetup}`, {
-    method: "GET",
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      console.log("API response:", data);
-      setUser([...user, data]);
+  useEffect(() => {
+    fetch(`https://find-therapist-api.onrender.com/auth/user/${profilesetup}`, {
+      method: "GET",
     })
-    .catch((error) => {
-      console.error("API error:", error);
-    });
+      .then((response) => response.json())
+      .then((data) => {
+        setLoading(false);
+        console.log("API response:", data);
+        setUser([...user, data]);
+      })
+      .catch((error) => {
+        console.error("API error:", error);
+      });
+  }, []);
+
+  // console.log(user[0].data.firstName + " " + user[0].data.lastName);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -66,80 +72,94 @@ const ProfileSetup = () => {
 
   return (
     <main>
-      <nav className="profile-nav">
-        <Link className="profile-logo" to="/">
-          LOGO
-        </Link>
-        <div>
-          <img src="" alt="" />
-          <p className="name">Grace Ashley</p>
-        </div>
-      </nav>
-      <section className="profile-body">
-        <form className="setup-card" onSubmit={handleSubmit}>
-          <div
-            className="heading-content"
-            style={{ display: num == 4 ? "none" : "block" }}
-          >
-            <p className="step">Step {num + 1}</p>
-            <div className="progress">
-              <div
-                className="setup-progress"
-                style={{ background: num == 0 ? "#3d7d57" : "#3d7d57" }}
-              ></div>
-              <div
-                className="setup-progress"
-                style={{
-                  background: num == 0 ? "#D9D9D9" : "#3d7d57",
-                }}
-              ></div>
-              <div
-                className="setup-progress"
-                style={{
-                  background: num == 0 || num == 1 ? "#D9D9D9" : "#3d7d57",
-                }}
-              ></div>
-              <div
-                className="setup-progress"
-                style={{
-                  background:
-                    num == 0 || num == 1 || num == 2 ? "#D9D9D9" : "#3d7d57",
-                }}
-              ></div>
+      {loading ? (
+        <h1>Loading</h1>
+      ) : (
+        <>
+          <nav className="profile-nav">
+            <Link className="profile-logo" to="/">
+              LOGO
+            </Link>
+            <div>
+              <img src="" alt="" />
+              <p className="name">
+                {user[0].data.firstName + " " + user[0].data.lastName}
+              </p>
             </div>
-            <h3>{SetupTitle[num]}</h3>
-          </div>
-          <section className="body">
-            {SetupBody()}
-            <div style={{ display: num == 4 ? "none" : "block" }}>
-              <button onClick={handleNext} disabled={num > 4} className="login">
-                Next
-              </button>
-              <button
-                style={{ display: num == 0 ? "none" : "block" }}
-                onClick={handleBack}
-                disabled={num < 1}
-                className="back-btn"
+          </nav>
+          <section className="profile-body">
+            <form className="setup-card" onSubmit={handleSubmit}>
+              <div
+                className="heading-content"
+                style={{ display: num == 4 ? "none" : "block" }}
               >
-                Back
-              </button>
-            </div>
-            <button
-              style={{
-                display:
-                  num == 0 || num == 1 || num == 2 || num == 3
-                    ? "none"
-                    : "block",
-              }}
-              type="submit"
-              disabled={num < 1}
-              className="login"
-            >
-              Check out profile
-            </button>
+                <p className="step">Step {num + 1}</p>
+                <div className="progress">
+                  <div
+                    className="setup-progress"
+                    style={{ background: num == 0 ? "#3d7d57" : "#3d7d57" }}
+                  ></div>
+                  <div
+                    className="setup-progress"
+                    style={{
+                      background: num == 0 ? "#D9D9D9" : "#3d7d57",
+                    }}
+                  ></div>
+                  <div
+                    className="setup-progress"
+                    style={{
+                      background: num == 0 || num == 1 ? "#D9D9D9" : "#3d7d57",
+                    }}
+                  ></div>
+                  <div
+                    className="setup-progress"
+                    style={{
+                      background:
+                        num == 0 || num == 1 || num == 2
+                          ? "#D9D9D9"
+                          : "#3d7d57",
+                    }}
+                  ></div>
+                </div>
+                <h3>{SetupTitle[num]}</h3>
+              </div>
+              <section className="body">
+                {SetupBody()}
+                <div style={{ display: num == 4 ? "none" : "block" }}>
+                  <button
+                    onClick={handleNext}
+                    disabled={num > 4}
+                    className="login"
+                  >
+                    Next
+                  </button>
+                  <button
+                    style={{ display: num == 0 ? "none" : "block" }}
+                    onClick={handleBack}
+                    disabled={num < 1}
+                    className="back-btn"
+                  >
+                    Back
+                  </button>
+                </div>
+                <button
+                  style={{
+                    display:
+                      num == 0 || num == 1 || num == 2 || num == 3
+                        ? "none"
+                        : "block",
+                  }}
+                  type="submit"
+                  disabled={num < 1}
+                  className="login"
+                >
+                  Check out profile
+                </button>
+              </section>
+            </form>
           </section>
-        </form>
-      </section>
+        </>
+      )}
     </main>
   );
 };
