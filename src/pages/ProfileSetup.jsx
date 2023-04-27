@@ -28,6 +28,8 @@ const ProfileSetup = () => {
     linkedin: "",
   });
 
+  // getting users name to render the profile setup ui
+
   useEffect(() => {
     fetch(`https://find-therapist-api.onrender.com/auth/user/${profilesetup}`, {
       method: "GET",
@@ -43,42 +45,58 @@ const ProfileSetup = () => {
       });
   }, []);
 
+  // onClick of the done btn, the submit form is triggered
+
   function handleSubmit(e) {
     e.preventDefault();
-    useEffect(() => {
-      fetch("https://find-therapist-api.onrender.com//api/v1/profile", {
-        method: "POST",
-        body: JSON.stringify(profile),
-        headers: {
-          "Content-Type": "application/json",
-        },
+
+    fetch("https://find-therapist-api.onrender.com//api/v1/profile", {
+      method: "POST",
+      body: JSON.stringify(profile),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("API response:", data);
+        // set data id to the id state
+        setId(data.user[0]["_id"]);
+
+        // if data.status is success , move to the sucess page
+        if ((data.status = "success")) {
+          setNum(num + 1);
+        }
+        // else move to the failed status
+        else if ((data.status = "failed")) {
+          setNum(num + 2);
+        }
       })
-        .then((response) => response.json())
-        .then((data) => {
-          console.log("API response:", data);
-          setId(data.user[0]["_id"]);
-        })
-        .catch((error) => {
-          console.error("API error:", error);
-        });
-    }, []);
+      .catch((error) => {
+        console.error("API error:", error);
+      });
+    console.log(JSON.stringify(profile));
   }
 
+  // redirecting to the users dashboard
   const handleProfileCheckout = (e) => {
     e.preventDefault();
-    window.location.href = "/profiledashboard";
+    window.location.href = `/${id}`;
   };
 
+  // handling next button
   const handleNext = (e) => {
     e.preventDefault();
     setNum(num + 1);
   };
 
+  // handling back button
   const handleBack = (e) => {
     e.preventDefault();
     setNum(num - 1);
   };
 
+  // Setup title names
   const SetupTitle = [
     "Personal Details",
     "Work Details",
@@ -127,6 +145,7 @@ const ProfileSetup = () => {
                 className="setup-card"
                 onSubmit={handleSubmit}
                 encType="multipart/form-data"
+                action="https://find-therapist-api.onrender.com//api/v1/profile"
               >
                 <div
                   className="heading-content"
@@ -179,7 +198,6 @@ const ProfileSetup = () => {
                         display:
                           num == 0 || num == 1 || num == 2 ? "none" : "block",
                       }}
-                      onClick={handleNext}
                       disabled={num > 4}
                       className="login"
                       type="submit"

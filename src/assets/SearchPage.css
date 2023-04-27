@@ -175,14 +175,13 @@
   border-radius: 10px;
 }
 
-.card-title {
+.search-card .card-title {
   display: flex;
   justify-content: space-between;
   width: 340px;
 }
 
-.card-title h5,
-p {
+.search-card .card-title h5 {
   margin: 0px;
 }
 

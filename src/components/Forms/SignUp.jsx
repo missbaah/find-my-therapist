@@ -97,12 +97,7 @@ const SignUp = ({ showSignUp }) => {
     console.log(JSON.stringify(person));
   }
 
-  // const id = user[0].data.user.id;
-
-  // console.log(user[0].data.user.id); // id of user
-
   const handleSetupRedirect = () => {
-    // e.preventDefault();
     window.location.href = `/${user[0].data.user.id}`;
   };
 
