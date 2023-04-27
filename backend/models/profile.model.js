@@ -9,7 +9,7 @@ const profileSchema = new Schema({
     profilePic: { type: String },
     gender: { type: String, },
     workAddress: { type: String },
-    experience: { type: Number },
+    experience: { type: String },
     specialties: { type: String },
     interestGroup:  { type: String },
     officeHoursStart: { type: String },
@@ -19,9 +19,7 @@ const profileSchema = new Schema({
     website: { type: String },
     facebook: { type: String },
     instagram: { type: String },
-    // tiktok: { type: String },
     linkedin: { type: String },
-    // twitter: { type: String },
     user: { 
         type: mongoose.Schema.Types.ObjectId, 
         ref: 'User',
