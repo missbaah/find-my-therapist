@@ -43,28 +43,31 @@ const ProfileSetup = () => {
       });
   }, []);
 
-  useEffect(() => {
-    fetch("https://find-therapist-api.onrender.com//api/v1/profile", {
-      method: "POST",
-      body: JSON.stringify(profile),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("API response:", data);
-        setId(data.user[0]["_id"]);
-      })
-      .catch((error) => {
-        console.error("API error:", error);
-      });
-  }, []);
-
   function handleSubmit(e) {
     e.preventDefault();
-    window.location.href = "/profiledashboard";
+    useEffect(() => {
+      fetch("https://find-therapist-api.onrender.com//api/v1/profile", {
+        method: "POST",
+        body: JSON.stringify(profile),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log("API response:", data);
+          setId(data.user[0]["_id"]);
+        })
+        .catch((error) => {
+          console.error("API error:", error);
+        });
+    }, []);
   }
+
+  const handleProfileCheckout = (e) => {
+    e.preventDefault();
+    window.location.href = "/profiledashboard";
+  };
 
   const handleNext = (e) => {
     e.preventDefault();
@@ -123,7 +126,7 @@ const ProfileSetup = () => {
               <form
                 className="setup-card"
                 onSubmit={handleSubmit}
-                enctype="multipart/form-data"
+                encType="multipart/form-data"
               >
                 <div
                   className="heading-content"
@@ -164,11 +167,24 @@ const ProfileSetup = () => {
                   {SetupBody()}
                   <div style={{ display: num == 4 ? "none" : "block" }}>
                     <button
+                      style={{ display: num == 3 ? "none" : "block" }}
                       onClick={handleNext}
                       disabled={num > 4}
                       className="login"
                     >
                       Next
+                    </button>
+                    <button
+                      style={{
+                        display:
+                          num == 0 || num == 1 || num == 2 ? "none" : "block",
+                      }}
+                      onClick={handleNext}
+                      disabled={num > 4}
+                      className="login"
+                      type="submit"
+                    >
+                      Done
                     </button>
                     <button
                       style={{ display: num == 0 ? "none" : "block" }}
@@ -186,9 +202,9 @@ const ProfileSetup = () => {
                           ? "none"
                           : "block",
                     }}
-                    type="submit"
                     disabled={num < 1}
                     className="login"
+                    onClick={handleProfileCheckout}
                   >
                     Check out profile
                   </button>

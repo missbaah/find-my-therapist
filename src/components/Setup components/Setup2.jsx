@@ -47,14 +47,9 @@ const Setup2 = () => {
           onChange={handleWorkAddress}
         />
       </div>
-      <div className="item ">
+      <div className="item address ">
         <label>Years of Experience</label>
-        <select onChange={handleExperience}>
-          <option value="0-1 years">0-1 years</option>
-          <option value="0-1 years">1-2 years</option>
-          <option value="0-1 years">3-5 years</option>
-          <option value="0-1 years">5-10 years</option>
-        </select>
+        <input type="text" placeholder="eg. 1 year 3 months" />
       </div>
       <div className="item ">
         <label>Specialities</label>
