@@ -13,8 +13,8 @@ const Setup4 = () => {
   const handleInstagram = (e) => {
     setProfile({ ...profile, instagram: e.target.value });
   };
-  const handleTwitter = (e) => {
-    setProfile({ ...profile, tiktok: e.target.value });
+  const handleLinkedIn = (e) => {
+    setProfile({ ...profile, linkedin: e.target.value });
   };
 
   return (
@@ -44,11 +44,11 @@ const Setup4 = () => {
         />
       </div>
       <div className="item address">
-        <label>Twitter</label>
+        <label>LinkedIn</label>
         <input
           type="text"
-          placeholder="https://www.twitter.com/username/"
-          onChange={handleTwitter}
+          placeholder="https://www.linkedin.com/username/"
+          onChange={handleLinkedIn}
         />
       </div>
     </section>

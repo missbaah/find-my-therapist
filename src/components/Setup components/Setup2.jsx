@@ -59,7 +59,7 @@ const Setup2 = () => {
       <div className="item ">
         <label>Specialities</label>
         <select onChange={handleSpecialties}>
-          <option value="0-1 years"></option>
+          <option value="0-1 years">Depression</option>
           <option value="0-1 years">CBT</option>
           <option value="0-1 years">DBT</option>
           <option value="0-1 years">5-10 years</option>
@@ -68,12 +68,12 @@ const Setup2 = () => {
       <div className="item ">
         <label>Interest Group(s)</label>
         <select onChange={handleInterestGroups}>
-          <option value="0-1 years">Everyone</option>
-          <option value="0-1 years">Women</option>
-          <option value="0-1 years">Men</option>
-          <option value="0-1 years">Children and Teens</option>
-          <option value="0-1 years">Couples</option>
-          <option value="0-1 years">Queer People</option>
+          <option value="Everyone">Everyone</option>
+          <option value="Women">Women</option>
+          <option value="Men">Men</option>
+          <option value="Children and Teens">Children and Teens</option>
+          <option value="Couples">Couples</option>
+          <option value="Queer People">Queer People</option>
         </select>
       </div>
     </section>

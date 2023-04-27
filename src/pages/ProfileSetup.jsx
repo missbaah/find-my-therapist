@@ -9,6 +9,7 @@ const ProfileSetup = () => {
   const [user, setUser] = useState([]);
   const { profilesetup } = useParams();
   const [loading, setLoading] = useState(true);
+  const [id, setId] = useState("");
   const [profile, setProfile] = useState({
     bio: "",
     profilePic: "",
@@ -24,8 +25,7 @@ const ProfileSetup = () => {
     website: "",
     facebook: "",
     instagram: "",
-    tiktok: "",
-    snapchat: "",
+    linkedin: "",
   });
 
   useEffect(() => {
@@ -54,6 +54,7 @@ const ProfileSetup = () => {
       .then((response) => response.json())
       .then((data) => {
         console.log("API response:", data);
+        setId(data.user[0]["_id"]);
       })
       .catch((error) => {
         console.error("API error:", error);
@@ -119,7 +120,11 @@ const ProfileSetup = () => {
               </div>
             </nav>
             <section className="profile-body">
-              <form className="setup-card" onSubmit={handleSubmit}>
+              <form
+                className="setup-card"
+                onSubmit={handleSubmit}
+                enctype="multipart/form-data"
+              >
                 <div
                   className="heading-content"
                   style={{ display: num == 4 ? "none" : "block" }}
