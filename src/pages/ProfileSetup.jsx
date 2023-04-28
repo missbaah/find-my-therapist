@@ -50,7 +50,7 @@ const ProfileSetup = () => {
   function handleSubmit(e) {
     e.preventDefault();
 
-    fetch("https://find-therapist-api.onrender.com//api/v1/profile", {
+    fetch("https://find-therapist-api.onrender.com/api/v1/profile", {
       method: "POST",
       body: JSON.stringify(profile),
       headers: {
@@ -64,11 +64,11 @@ const ProfileSetup = () => {
         setId(data.user[0]["_id"]);
 
         // if data.status is success , move to the sucess page
-        if ((data.status = "success")) {
+        if (data.status == "success") {
           setNum(num + 1);
         }
         // else move to the failed status
-        else if ((data.status = "failed")) {
+        else if (data.status == "failed") {
           setNum(num + 2);
         }
       })

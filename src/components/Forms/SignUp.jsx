@@ -84,10 +84,10 @@ const SignUp = ({ showSignUp }) => {
       .then((data) => {
         console.log("API response:", data);
         setUser([...user, data]);
-        if ((data.status = "success")) {
+        if (data.status == "success") {
           setStepNum(stepNum + 1);
           console.log(data.data.user.id);
-        } else if ((data.status = "failed")) {
+        } else if (data.status == "failed") {
           setStepNum(stepNum + 2);
         }
       })
