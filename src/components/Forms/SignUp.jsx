@@ -46,9 +46,8 @@ const SignUp = ({ showSignUp }) => {
 
     const isFilled = requiredFields.every((field) => person[field] !== "");
 
-    if (isFilled && stepNum < 2) {
+    if (isFilled && stepNum < 3) {
       setStepNum(stepNum + 1);
-      setError(!error);
     } else {
       setError(!error);
     }

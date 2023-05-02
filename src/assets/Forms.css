@@ -243,5 +243,6 @@
   border-radius: 10px;
   color: #dc143c;
   display: flex;
+  align-items: center;
   gap: 10px;
 }

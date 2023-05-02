@@ -55,6 +55,7 @@ const ProfileSetup = () => {
       body: JSON.stringify(profile),
       headers: {
         "Content-Type": "application/json",
+        Cookies: "jwt {token}",
       },
     })
       .then((response) => response.json())
