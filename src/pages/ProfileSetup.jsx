@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import "../assets/ProfileSetup.css";
+import SignupContext from "../context/SignupContext";
 import ProfileSetupContext from "../context/ProfileSetupContext";
 import { Setup1, Setup2, Setup3, Setup4, Setup5 } from "../components";
 
@@ -27,6 +28,8 @@ const ProfileSetup = () => {
     instagram: "",
     linkedin: "",
   });
+
+  const { token } = useContext(SignupContext);
 
   // getting users name to render the profile setup ui
 
@@ -55,7 +58,7 @@ const ProfileSetup = () => {
       body: JSON.stringify(profile),
       headers: {
         "Content-Type": "application/json",
-        Cookies: "jwt {token}",
+        Authorization: `Bearer ${token}`,
       },
     })
       .then((response) => response.json())

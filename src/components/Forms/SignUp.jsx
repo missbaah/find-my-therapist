@@ -86,6 +86,7 @@ const SignUp = ({ showSignUp }) => {
         if (data.status == "success") {
           setStepNum(stepNum + 1);
           console.log(data.data.user.id);
+          console.log(token);
         } else if (data.status == "failed") {
           setStepNum(stepNum + 2);
         }
@@ -102,7 +103,7 @@ const SignUp = ({ showSignUp }) => {
 
   return (
     <main className={`${showSignUp ? "active" : ""} blanket one`}>
-      <SignupContext.Provider value={{ person, setPerson }}>
+      <SignupContext.Provider value={{ person, setPerson, token }}>
         <form
           action="https://find-therapist-api.onrender.com/auth/signup"
           onSubmit={handleSubmit}
