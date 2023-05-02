@@ -29,8 +29,6 @@ const ProfileSetup = () => {
     linkedin: "",
   });
 
-  const { token } = useContext(SignupContext);
-
   // getting users name to render the profile setup ui
 
   useEffect(() => {
@@ -58,7 +56,6 @@ const ProfileSetup = () => {
       body: JSON.stringify(profile),
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
       },
     })
       .then((response) => response.json())

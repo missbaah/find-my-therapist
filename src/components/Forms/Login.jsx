@@ -31,7 +31,7 @@ const Login = ({ showLogin }) => {
       .then((data) => {
         console.log("API response:", data);
         if (data.status == "success") {
-          window.location.href = "";
+          window.location.href = "/profiledashboard";
         }
       })
       .catch((error) => {
