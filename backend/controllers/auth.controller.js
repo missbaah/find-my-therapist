@@ -22,6 +22,7 @@ const createSendToken = (user,statusCode, res) => {
     const cookieOptions = {
         expires: new Date(Date.now() + 1 * 60 * 60 *1000 ),
         httpOnly: true,
+        sameSite: 'none',
     };
 
     if(process.env.NODE_ENV === 'production') cookieOptions.secure = true;
@@ -59,6 +60,14 @@ exports.signup = async (req,res) => {
     }
 
     // CHECK VALIDITY OF LICENSING DETAILS
+    // const verifiedMHP = verifyMHPbyName(firstName, lastName)
+    // // console.log(verifiedMHP) 
+    // if(!verifiedMHP){
+    //     return res.status(400).json({
+    //         status: 'fail',
+    //         message: 'Not a gazetted member of the Ghana Psychology Board'
+    //     })
+    // }
     
     // CHECK IF USER ALREADY EXISTS
     const oldUser = await User.findOne({ email })
@@ -83,8 +92,8 @@ exports.signup = async (req,res) => {
     try{
         // add later setting up email
         // SEND WELCOME MAIL
-        // const url = `${req.protocol}://${req.get('host')}/api/v1/profile`
-        // await new Email(user, url).sendWelcome()
+        const url = `${req.protocol}://${req.get('host')}/api/v1/profile`
+        await new Email(user, url).sendWelcome()
         // CREATE and SEND TOken
         createSendToken(user, 200, res);
     }catch(err){
